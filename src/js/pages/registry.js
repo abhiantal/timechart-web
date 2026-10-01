@@ -10,13 +10,15 @@ export const PAGE_PATHS = {
   study: './pages/main/study.html',
   terms: './pages/main/terms.html',
 
-  // 6 Study Deep-Dive Pages
+  // 8 Study Deep-Dive Pages
   'study/j-curve': './pages/Knowledge/j-curve.html',
   'study/atomic-habits': './pages/Knowledge/atomic-habits.html',
   'study/research': './pages/Knowledge/research.html',
   'study/kaizen': './pages/Knowledge/kaizen.html',
   'study/flow-state': './pages/Knowledge/flow-state.html',
   'study/habit-stacking': './pages/Knowledge/habit-stacking.html',
+  'study/the-secret': './pages/Knowledge/the-secret-bucket-list.html',
+  'study/social-accountability': './pages/Knowledge/social-accountability.html',
 
   // 11 Core Action Modules
   'features/day-task': './pages/modules/day-task.html',
@@ -44,13 +46,15 @@ export const PAGE_TITLES = {
   study: 'Study & Research Hub — NextGen',
   terms: 'Terms & Conditions — Time Chart',
 
-  // 6 Study Deep-Dive Titles
+  // 8 Study Deep-Dive Titles
   'study/j-curve': 'The J-Curve Effect — Time Chart Research',
   'study/atomic-habits': 'Atomic Habits Framework — Time Chart Research',
   'study/research': 'App Research & Data — Time Chart Research',
   'study/kaizen': 'Kaizen & The 1% Rule — Time Chart Research',
   'study/flow-state': 'Flow State Architecture — Time Chart Research',
   'study/habit-stacking': 'Habit Stacking & Anchoring — Time Chart Research',
+  'study/the-secret': 'The Secret & Visualization — Time Chart Research',
+  'study/social-accountability': 'Social Proof & Public Accountability — Time Chart Research',
 
   // 11 Module Detail Titles
   'features/day-task': 'Day Task Module — Time Chart',
