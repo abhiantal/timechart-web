@@ -9,7 +9,7 @@ import { PAGE_PATHS, MODULE_NAMES } from '../pages/registry.js';
 
 export class TabController {
   constructor() {
-    this.primaryTabs = ['home', 'features', 'billing', 'study', 'terms'];
+    this.primaryTabs = ['home', 'features', 'billing', 'knowledge', 'terms'];
     this.currentRoute = 'home';
     this.navLinks = $$('[data-tab-target]');
   }
@@ -136,7 +136,7 @@ export class TabController {
   isValidRoute(route) {
     if (!route) return false;
     const clean = route.replace(/^#\/?/, '').trim();
-    return this.primaryTabs.includes(clean) || (clean in PAGE_PATHS) || clean.startsWith('features/') || clean.startsWith('study/');
+    return this.primaryTabs.includes(clean) || (clean in PAGE_PATHS) || clean.startsWith('features/') || clean.startsWith('knowledge/') || clean.startsWith('study/');
   }
 
   navigate(rawRoute, updateHash = true) {
@@ -149,7 +149,7 @@ export class TabController {
 
     // 2. Toggle detail page state on body & update breadcrumb
     const isDetailRoute = route.startsWith('features/');
-    const isStudyDetailRoute = route.startsWith('study/') && route.length > 'study/'.length && route !== 'study';
+    const isKnowledgeDetailRoute = route.startsWith('knowledge/') && route.length > 'knowledge/'.length && route !== 'knowledge';
     if (isDetailRoute) {
       document.body.classList.add('is-detail-page');
       const moduleId = route.replace('features/', '');
@@ -163,8 +163,8 @@ export class TabController {
     }
 
     // 3. Determine Primary Active Tab for Navbar
-    // If on a sub-route like 'features/day-task' or 'study/atomic-habits', parent tab remains highlighted
-    const primaryActiveTab = isDetailRoute ? 'features' : isStudyDetailRoute ? 'study' : route;
+    // If on a sub-route like 'features/day-task' or 'knowledge/atomic-habits', parent tab remains highlighted
+    const primaryActiveTab = isDetailRoute ? 'features' : isKnowledgeDetailRoute ? 'knowledge' : route;
 
     // 3. Update Nav Link Active States (Desktop & Mobile)
     this.navLinks = $$('[data-tab-target]');
