@@ -160,10 +160,10 @@ export const APP_LINKS = {
      * [WHY]: Explains the Japanese philosophy of Kaizen (small, continuous 1% daily compounding improvement).
      */
     kaizen: {
-      videoId: '0hbmz82wN9Q',
-      title: 'Kaizen Philosophy and Continuous Improvement',
-      embedUrl: 'https://www.youtube-nocookie.com/embed/0hbmz82wN9Q',
-      watchUrl: 'https://www.youtube.com/watch?v=0hbmz82wN9Q',
+      videoId: 'kUttbcVanw4',
+      title: 'Marginal Gains Theory | Why Successful People Seek 1% Improvement Everyday',
+      embedUrl: 'https://www.youtube-nocookie.com/embed/kUttbcVanw4',
+      watchUrl: 'https://www.youtube.com/watch?v=kUttbcVanw4',
     },
 
     /**
@@ -171,10 +171,10 @@ export const APP_LINKS = {
      * [WHY]: Explains the J-Curve phenomenon and how to persevere through the initial dip before exponential habit growth.
      */
     jCurve: {
-      videoId: 'F_fJ8Pky2k8',
-      title: 'The J-Curve and Overcoming the Dip',
-      embedUrl: 'https://www.youtube-nocookie.com/embed/F_fJ8Pky2k8',
-      watchUrl: 'https://www.youtube.com/watch?v=F_fJ8Pky2k8',
+      videoId: 'n5vtVL7q8tI',
+      title: 'Mastery by George Leonard – Animated Book Review',
+      embedUrl: 'https://www.youtube-nocookie.com/embed/n5vtVL7q8tI',
+      watchUrl: 'https://www.youtube.com/watch?v=n5vtVL7q8tI',
     },
 
     /**
@@ -193,10 +193,10 @@ export const APP_LINKS = {
      * [WHY]: Renowned TED Talk by psychologist Mihaly Csikszentmihalyi exploring the psychology of optimal experience and flow state.
      */
     flowState: {
-      videoId: 'fXIeFJCqsCE',
-      title: 'Mihaly Csikszentmihalyi: Flow, the secret to happiness',
-      embedUrl: 'https://www.youtube-nocookie.com/embed/fXIeFJCqsCE',
-      watchUrl: 'https://www.youtube.com/watch?v=fXIeFJCqsCE',
+      videoId: '8h6IMYRoCZw',
+      title: 'Flow by Mihaly Csikszentmihalyi – Animated Book Summary',
+      embedUrl: 'https://www.youtube-nocookie.com/embed/8h6IMYRoCZw',
+      watchUrl: 'https://www.youtube.com/watch?v=8h6IMYRoCZw',
     },
 
     /**
