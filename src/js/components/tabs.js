@@ -3,20 +3,23 @@
  * Synchronizes tabs, URL hashes, desktop navbar, mobile drawer, and mounts separate page files and module detail views.
  */
 
-import { $, $$, on, addClass, removeClass } from '../utils/dom.js';
-import { pageLoader } from '../core/page-loader.js';
-import { PAGE_PATHS, MODULE_NAMES } from '../pages/registry.js';
+import { $, $$, on, addClass, removeClass } from '../utils/dom.js?v=15';
+import { pageLoader } from '../core/page-loader.js?v=15';
+import { PAGE_PATHS, MODULE_NAMES } from '../pages/registry.js?v=15';
 
 export class TabController {
   constructor() {
-    this.primaryTabs = ['home', 'features', 'billing', 'knowledge', 'terms'];
+    this.primaryTabs = ['home', 'features', 'billing', 'knowledge', 'study', 'terms'];
     this.currentRoute = 'home';
     this.navLinks = $$('[data-tab-target]');
   }
 
   init() {
-    // 1. Resolve initial route from URL hash (e.g. #billing, #features/day-task) or default to 'home'
-    const hash = window.location.hash.replace('#', '').toLowerCase().trim();
+    // 1. Resolve initial route from URL hash (e.g. #billing, #knowledge, #features/day-task) or default to 'home'
+    let hash = window.location.hash.replace(/^#\/?/, '').toLowerCase().trim();
+    if (hash === 'study') hash = 'knowledge';
+    if (hash.startsWith('study/')) hash = hash.replace('study/', 'knowledge/');
+
     let initialRoute = 'home';
     if (this.isValidRoute(hash)) {
       initialRoute = hash;
@@ -42,7 +45,7 @@ export class TabController {
         return;
       }
 
-      // 1. Study Target Click (e.g. data-study-target="j-curve" or "study")
+      // 1. Study / Knowledge Target Click (e.g. data-study-target="j-curve" or "knowledge")
       const studyTrigger = e.target.closest('[data-study-target]');
       if (studyTrigger) {
         e.preventDefault();
@@ -59,7 +62,7 @@ export class TabController {
         }
       }
 
-      // 2. Study Card Click (clicking anywhere on card body)
+      // 2. Study / Knowledge Card Click (clicking anywhere on card body)
       const studyCard = e.target.closest('[data-study-card]');
       if (studyCard && !e.target.closest('button') && !e.target.closest('a')) {
         e.preventDefault();
@@ -97,25 +100,28 @@ export class TabController {
         }
       }
 
-      // 5. Primary Tab Click (data-tab-target="features", data-tab-target="study", etc.)
+      // 5. Primary Tab Click (data-tab-target="knowledge", data-tab-target="features", etc.)
       const tabTrigger = e.target.closest('[data-tab-target]');
       if (tabTrigger) {
         e.preventDefault();
         let target = tabTrigger.getAttribute('data-tab-target').replace(/^#\/?/, '').trim();
+        if (target === 'study') target = 'knowledge';
         if (this.isValidRoute(target)) {
           this.navigate(target, true);
           return;
         }
       }
 
-      // 6. Generic Hash Link (<a href="#study/j-curve"> or <a href="#study"> or <a href="#features">)
+      // 6. Generic Hash Link (<a href="#knowledge/j-curve"> or <a href="#knowledge"> or <a href="#study">)
       const hashLink = e.target.closest('a[href^="#"]');
       if (hashLink) {
         if (hashLink.closest('.category-nav-pill, .features-category-nav, [data-category-filter]')) {
           return;
         }
         const href = hashLink.getAttribute('href');
-        const cleanRoute = href.replace(/^#\/?/, '').trim();
+        let cleanRoute = href.replace(/^#\/?/, '').trim();
+        if (cleanRoute === 'study') cleanRoute = 'knowledge';
+        if (cleanRoute.startsWith('study/')) cleanRoute = cleanRoute.replace('study/', 'knowledge/');
         if (cleanRoute && this.isValidRoute(cleanRoute)) {
           e.preventDefault();
           this.navigate(cleanRoute, true);
@@ -126,7 +132,9 @@ export class TabController {
 
     // 3. Listen to browser forward/backward navigation
     window.addEventListener('hashchange', () => {
-      const currentHash = window.location.hash.replace(/^#\/?/, '').toLowerCase().trim();
+      let currentHash = window.location.hash.replace(/^#\/?/, '').toLowerCase().trim();
+      if (currentHash === 'study') currentHash = 'knowledge';
+      if (currentHash.startsWith('study/')) currentHash = currentHash.replace('study/', 'knowledge/');
       if (this.isValidRoute(currentHash) && currentHash !== this.currentRoute) {
         this.navigate(currentHash, false);
       }
@@ -135,12 +143,15 @@ export class TabController {
 
   isValidRoute(route) {
     if (!route) return false;
-    const clean = route.replace(/^#\/?/, '').trim();
+    let clean = route.replace(/^#\/?/, '').trim();
+    if (clean === 'study') clean = 'knowledge';
     return this.primaryTabs.includes(clean) || (clean in PAGE_PATHS) || clean.startsWith('features/') || clean.startsWith('knowledge/') || clean.startsWith('study/');
   }
 
   navigate(rawRoute, updateHash = true) {
-    const route = rawRoute.replace(/^#\/?/, '').trim();
+    let route = rawRoute.replace(/^#\/?/, '').trim();
+    if (route === 'study') route = 'knowledge';
+    if (route.startsWith('study/')) route = route.replace('study/', 'knowledge/');
     if (!this.isValidRoute(route)) return;
     this.currentRoute = route;
 
@@ -164,12 +175,13 @@ export class TabController {
 
     // 3. Determine Primary Active Tab for Navbar
     // If on a sub-route like 'features/day-task' or 'knowledge/atomic-habits', parent tab remains highlighted
-    const primaryActiveTab = isDetailRoute ? 'features' : isKnowledgeDetailRoute ? 'knowledge' : route;
+    const primaryActiveTab = isDetailRoute ? 'features' : isKnowledgeDetailRoute ? 'knowledge' : (route === 'study' ? 'knowledge' : route);
 
     // 3. Update Nav Link Active States (Desktop & Mobile)
     this.navLinks = $$('[data-tab-target]');
     this.navLinks.forEach(link => {
-      if (link.getAttribute('data-tab-target') === primaryActiveTab) {
+      const target = link.getAttribute('data-tab-target');
+      if (target === primaryActiveTab || (primaryActiveTab === 'knowledge' && target === 'study')) {
         addClass(link, 'active');
       } else {
         removeClass(link, 'active');

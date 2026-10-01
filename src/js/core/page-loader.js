@@ -7,7 +7,7 @@ import { $ } from '../utils/dom.js';
 import { scrollReveal } from '../utils/animation.js';
 import { pricingController } from '../components/pricing.js';
 import { homeController } from '../pages/home.js';
-import { PAGE_PATHS, PAGE_TITLES } from '../pages/registry.js';
+import { PAGE_PATHS, PAGE_TITLES } from '../pages/registry.js?v=15';
 
 class PageLoader {
   constructor() {
@@ -24,9 +24,14 @@ class PageLoader {
     }
   }
 
-  async load(pageName) {
+  async load(rawPageName) {
     if (!this.mountTarget) this.init();
     if (!this.mountTarget) return;
+
+    // Normalize study aliases to knowledge
+    let pageName = (rawPageName || 'home').replace(/^#\/?/, '').trim();
+    if (pageName === 'study') pageName = 'knowledge';
+    if (pageName.startsWith('study/')) pageName = pageName.replace('study/', 'knowledge/');
 
     // 1. If already on this page and content is rendered, avoid redundant work
     if (this.currentPage === pageName && this.mountTarget.children.length > 0) {
@@ -39,22 +44,45 @@ class PageLoader {
       return;
     }
 
-    const pagePath = PAGE_PATHS[pageName] || (pageName.startsWith('features/') ? `./pages/modules/${pageName.replace('features/', '')}.html` : `./pages/main/${pageName}.html`);
+    const relPath = PAGE_PATHS[pageName] || (pageName.startsWith('features/') ? `./pages/modules/${pageName.replace('features/', '')}.html` : `./pages/main/${pageName}.html`);
+    const cleanRel = relPath.replace(/^\.\//, '');
+
+    // Resolve robust base URL using import.meta.url (guaranteed to point to project root)
+    let baseUrl;
+    try {
+      baseUrl = new URL('../../../', import.meta.url).href;
+    } catch {
+      baseUrl = window.location.origin + window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1);
+    }
+    const resolvedUrl = new URL(cleanRel, baseUrl).href;
 
     // 3. Fetch clean page template with fallback for cleanUrl servers
     try {
-      const cacheBustUrl = pagePath.includes('?') ? `${pagePath}&v=${Date.now()}` : `${pagePath}?v=${Date.now()}`;
-      let response = await fetch(cacheBustUrl, { cache: 'no-cache' });
-      if (!response.ok && pagePath.endsWith('.html')) {
-        // Try without .html if static server enforces clean URLs
-        const cleanPath = pagePath.replace(/\.html$/, '');
-        const altResponse = await fetch(`${cleanPath}?v=${Date.now()}`, { cache: 'no-cache' });
+      const cacheBust = `v=${Date.now()}`;
+      const primaryUrl = resolvedUrl.includes('?') ? `${resolvedUrl}&${cacheBust}` : `${resolvedUrl}?${cacheBust}`;
+      let response = await fetch(primaryUrl, { cache: 'no-cache' });
+      
+      // Fallback 1: Try relative path directly if absolute failed
+      if (!response.ok) {
+        const fallbackUrl = relPath.includes('?') ? `${relPath}&${cacheBust}` : `${relPath}?${cacheBust}`;
+        const altResponse = await fetch(fallbackUrl, { cache: 'no-cache' });
         if (altResponse.ok) {
           response = altResponse;
         }
       }
+
+      // Fallback 2: Try without .html if static server enforces clean URLs
+      if (!response.ok && cleanRel.endsWith('.html')) {
+        const cleanPath = cleanRel.replace(/\.html$/, '');
+        const cleanUrl = new URL(cleanPath, baseUrl).href;
+        const altResponse = await fetch(`${cleanUrl}?${cacheBust}`, { cache: 'no-cache' });
+        if (altResponse.ok) {
+          response = altResponse;
+        }
+      }
+
       if (!response.ok) {
-        throw new Error(`Failed to load ${pagePath} (${response.status})`);
+        throw new Error(`Failed to load ${resolvedUrl} (${response.status})`);
       }
       const html = await response.text();
       this.pageCache.set(pageName, html);
@@ -67,7 +95,7 @@ class PageLoader {
             <div class="badge badge-rose mb-sm">Page Load Notice</div>
             <h3 class="card-title">Unable to Load Page</h3>
             <p class="card-desc mb-md">
-              Could not fetch <code>${pagePath}</code>. If running locally, please ensure you are viewing through a local server (e.g., Live Server at <code>http://127.0.0.1:5500/</code>).
+              Could not fetch <code>${resolvedUrl}</code>. If running locally, please ensure you are viewing through a local server (e.g., Live Server at <code>http://127.0.0.1:5500/</code>).
             </p>
           </div>
         </div>

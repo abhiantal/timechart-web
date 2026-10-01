@@ -351,7 +351,7 @@ export class FeatureVideoController {
     if (desc) desc.textContent = descText;
 
     // Remove Deep Dive button for detail pages & study pages (only show when on main features overview)
-    const isStudyPage = window.location.hash.startsWith('#study') || !!document.querySelector('.study-detail-section') || !!document.querySelector('.study-detail-hero-media');
+    const isStudyPage = window.location.hash.startsWith('#study') || window.location.hash.startsWith('#knowledge') || !!document.querySelector('.study-detail-section') || !!document.querySelector('.study-detail-hero-media');
     const isDetailPage = (window.location.hash.startsWith('#features/') && window.location.hash.length > '#features/'.length) || !!document.querySelector('.module-detail-hero') || isStudyPage;
     const isValidOverviewFeature = featureId && !featureId.startsWith('study') && !isDetailPage && !isStudyPage;
 
@@ -481,7 +481,7 @@ export class FeatureVideoController {
 
     // Deep Dive button visibility
     const deepDiveBtn = modal.querySelector('#theater-deep-dive-btn');
-    const isStudyPage = window.location.hash.startsWith('#study') || !!document.querySelector('.study-detail-section') || !!document.querySelector('.study-detail-hero-media');
+    const isStudyPage = window.location.hash.startsWith('#study') || window.location.hash.startsWith('#knowledge') || !!document.querySelector('.study-detail-section') || !!document.querySelector('.study-detail-hero-media');
     const isDetailPage = (window.location.hash.startsWith('#features/') && window.location.hash.length > '#features/'.length) || !!document.querySelector('.module-detail-hero') || isStudyPage;
     const isValidOverviewFeature = this.theaterFeatureId && !this.theaterFeatureId.startsWith('study') && !isDetailPage && !isStudyPage;
 
@@ -638,7 +638,7 @@ export class FeatureVideoController {
     if (desc) desc.textContent = descText || '';
 
     // Remove Deep Dive button for detail pages & study pages
-    const isStudyPage = window.location.hash.startsWith('#study') || !!document.querySelector('.study-detail-section') || !!document.querySelector('.study-detail-hero-media');
+    const isStudyPage = window.location.hash.startsWith('#study') || window.location.hash.startsWith('#knowledge') || !!document.querySelector('.study-detail-section') || !!document.querySelector('.study-detail-hero-media');
     const isDetailPage = (window.location.hash.startsWith('#features/') && window.location.hash.length > '#features/'.length) || !!document.querySelector('.module-detail-hero') || isStudyPage;
     const isValidOverviewFeature = featureId && !featureId.startsWith('study') && !isDetailPage && !isStudyPage;
 

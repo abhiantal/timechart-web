@@ -32,9 +32,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="./src/css/main.css?v=10">
-  <link rel="stylesheet" href="./src/css/components/checkout-modal.css?v=12">
-  <link rel="stylesheet" href="./src/css/pages/knowledge.css?v=10">
+  <link rel="stylesheet" href="./src/css/main.css?v=15">
+  <link rel="stylesheet" href="./src/css/components/checkout-modal.css?v=15">
+  <link rel="stylesheet" href="./src/css/pages/knowledge.css?v=15">
   <link rel="icon" type="image/png" href="./assets/main/image/website_logo.png?v=6">
 
   <!-- Payment Gateway SDK -->
@@ -212,6 +212,14 @@
             <rect x="3" y="14" width="7" height="7"></rect>
           </svg>
           <span>Explore 13 Modules</span>
+        </button>
+
+        <button type="button" class="btn btn-secondary btn-lg" data-tab-target="knowledge">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+          </svg>
+          <span>Knowledge Hub</span>
         </button>
 
         <button type="button" class="btn btn-secondary btn-lg" data-tab-target="billing">
@@ -1197,6 +1205,48 @@
   </div>
 </section>
 
+<!-- KNOWLEDGE & COGNITIVE ARCHITECTURE SPOTLIGHT -->
+<section class="section" id="home-knowledge-spotlight" style="padding-top: var(--space-2xl); padding-bottom: var(--space-2xl);">
+  <div class="container section-content">
+    <div class="card glass-panel-elevated p-xl reveal-on-scroll" style="background: linear-gradient(135deg, rgba(11, 15, 25, 0.92) 0%, rgba(18, 24, 38, 0.88) 100%); border: 1px solid rgba(0, 242, 254, 0.18); border-radius: var(--radius-lg); position: relative; overflow: hidden; box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5);">
+      <div style="position: absolute; top: -80px; right: -80px; width: 240px; height: 240px; background: radial-gradient(circle, rgba(0, 242, 254, 0.15) 0%, transparent 70%); pointer-events: none;"></div>
+      <div style="position: absolute; bottom: -80px; left: -80px; width: 240px; height: 240px; background: radial-gradient(circle, rgba(124, 58, 237, 0.15) 0%, transparent 70%); pointer-events: none;"></div>
+
+      <div class="flex-between items-center flex-wrap gap-lg" style="position: relative; z-index: 2;">
+        <div style="max-width: 680px;">
+          <div class="badge badge-violet mb-sm" style="display: inline-flex; align-items: center; gap: 6px;">
+            <span class="pulse-dot text-violet"></span>
+            <span>Cognitive Science &amp; Academic Foundation</span>
+          </div>
+          <h2 class="text-h2 mb-sm" style="font-size: clamp(1.6rem, 2.8vw, 2.2rem);">
+            Knowledge &amp; <span class="text-gradient">Behavioral Research Hub</span>
+          </h2>
+          <p class="text-secondary mb-md" style="font-size: 1.05rem; line-height: 1.6;">
+            Time Chart is built on proven behavioral psychology and best-selling literature: <strong>Atomic Habits</strong> by James Clear, <strong>The Secret</strong> by Rhonda Byrne, <strong>Deep Work</strong> by Cal Newport, <strong>Kaizen (1% Rule)</strong>, and <strong>The J-Curve Effect</strong>.
+          </p>
+
+          <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 1.5rem;">
+            <span class="badge badge-cyan" style="font-size: 0.8rem; padding: 4px 10px;">Atomic Habits (James Clear)</span>
+            <span class="badge badge-violet" style="font-size: 0.8rem; padding: 4px 10px;">The Secret (Rhonda Byrne)</span>
+            <span class="badge badge-emerald" style="font-size: 0.8rem; padding: 4px 10px;">The J-Curve Effect</span>
+            <span class="badge badge-amber" style="font-size: 0.8rem; padding: 4px 10px;">Kaizen &amp; 1% Law</span>
+            <span class="badge badge-cyan" style="font-size: 0.8rem; padding: 4px 10px;">Flow State Architecture</span>
+            <span class="badge badge-violet" style="font-size: 0.8rem; padding: 4px 10px;">Academic PDF Paper</span>
+          </div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 12px; min-width: 220px;">
+          <button type="button" class="btn btn-primary btn-lg btn-shimmer" data-tab-target="knowledge" style="width: 100%; justify-content: center; font-size: 1.05rem; padding: 14px 24px;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            <span>Explore Knowledge Hub</span>
+          </button>
+          <span class="text-xs text-muted text-center">8 Deep Dives &bull; Video Lectures &bull; PDF Research</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- 3. DEDICATED APK DOWNLOAD CENTER -->
 <section class="section" id="download-apk-section">
   <div class="container section-content">
@@ -1587,6 +1637,6 @@
   </div>
 
   <!-- Master Application Script -->
-  <script type="module" src="./src/js/main.js?v=11"></script>
+  <script type="module" src="./src/js/main.js?v=15"></script>
 </body>
 </html>

@@ -3,17 +3,17 @@
  * Entry point orchestrating core modules, components, tabs, and animations.
  */
 
-import { APP_CONFIG } from './core/config.js';
-import { themeEngine } from './core/theme.js';
-import { navbarController } from './components/navbar.js';
-import { tabController } from './components/tabs.js';
-import { pricingController } from './components/pricing.js';
-import { homeController } from './pages/home.js';
-import { modalController } from './components/modal.js';
-import { featureVideoController } from './components/features-video.js';
-import { toast } from './components/toast.js';
-import { scrollReveal } from './utils/animation.js';
-import { $$ } from './utils/dom.js';
+import { APP_CONFIG } from './core/config.js?v=15';
+import { themeEngine } from './core/theme.js?v=15';
+import { navbarController } from './components/navbar.js?v=15';
+import { tabController } from './components/tabs.js?v=15';
+import { pricingController } from './components/pricing.js?v=15';
+import { homeController } from './pages/home.js?v=15';
+import { modalController } from './components/modal.js?v=15';
+import { featureVideoController } from './components/features-video.js?v=15';
+import { toast } from './components/toast.js?v=15';
+import { scrollReveal } from './utils/animation.js?v=15';
+import { $$ } from './utils/dom.js?v=15';
 
 // Expose on window for runtime and inline interaction
 window.featureVideoController = featureVideoController;
