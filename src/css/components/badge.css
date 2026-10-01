@@ -1,0 +1,97 @@
+/**
+ * NextGen Component - Badges & Status Indicators
+ * Futuristic pills, tags, and animated live pulse indicators.
+ */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  user-select: none;
+}
+
+/* Glass Cyber Badge */
+.badge-cyber {
+  background: var(--bg-surface-subtle);
+  color: var(--text-primary);
+  border: 1px solid var(--border-medium);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+}
+
+/* Cyan Glow Badge */
+.badge-cyan {
+  background: rgba(2, 132, 199, 0.12);
+  color: var(--color-cyan);
+  border: 1px solid var(--color-cyan-glow);
+}
+
+[data-theme="dark"] .badge-cyan {
+  background: rgba(0, 242, 254, 0.12);
+  color: var(--color-cyan);
+  border: 1px solid rgba(0, 242, 254, 0.3);
+  box-shadow: 0 0 12px rgba(0, 242, 254, 0.2);
+}
+
+/* Violet Badge */
+.badge-violet {
+  background: rgba(99, 102, 241, 0.12);
+  color: var(--color-violet);
+  border: 1px solid var(--color-violet-glow);
+}
+
+[data-theme="dark"] .badge-violet {
+  background: rgba(168, 85, 247, 0.14);
+  color: var(--color-violet);
+  border: 1px solid rgba(168, 85, 247, 0.3);
+  box-shadow: 0 0 12px rgba(168, 85, 247, 0.2);
+}
+
+/* Emerald Live Status Badge */
+.badge-emerald {
+  background: rgba(5, 150, 105, 0.12);
+  color: var(--color-emerald);
+  border: 1px solid var(--color-emerald-glow);
+}
+
+/* Pulse Dot */
+.pulse-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  position: relative;
+  background-color: currentColor;
+}
+
+.pulse-dot::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  background-color: currentColor;
+  opacity: 0.6;
+  animation: pulsePing 1.8s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes pulsePing {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.8;
+  }
+  70% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}

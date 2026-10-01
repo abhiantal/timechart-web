@@ -1,0 +1,473 @@
+/**
+ * NextGen Component - Theme-Adaptive Futuristic Checkout Modal
+ * Seamless Light & Dark mode support, Glassmorphism, OLED Cinema Depth & Neon Holographic Accents.
+ */
+
+/* ==========================================================================
+   Backdrop & Shell Overlay
+   ========================================================================== */
+.checkout-modal-backdrop {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  background: rgba(15, 23, 42, 0.5) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  z-index: 999999 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 1.25rem !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+[data-theme="dark"] .checkout-modal-backdrop {
+  background: rgba(4, 7, 15, 0.88) !important;
+  backdrop-filter: blur(28px) !important;
+  -webkit-backdrop-filter: blur(28px) !important;
+}
+
+.checkout-modal-backdrop.open {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+/* ==========================================================================
+   Modal Card Container (Light Mode Base)
+   ========================================================================== */
+.checkout-modal-container {
+  width: 100% !important;
+  max-width: 520px !important;
+  background: linear-gradient(165deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 250, 252, 0.96) 100%) !important;
+  border: 1px solid rgba(2, 132, 199, 0.28) !important;
+  border-radius: 24px !important;
+  overflow: hidden !important;
+  box-shadow: 0 25px 70px rgba(15, 23, 42, 0.18), 0 0 35px rgba(2, 132, 199, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.8) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  transform: scale(0.92) translateY(18px) !important;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease !important;
+  position: relative !important;
+}
+
+/* Dark Mode Card Container */
+[data-theme="dark"] .checkout-modal-container {
+  background: linear-gradient(165deg, rgba(13, 20, 36, 0.96) 0%, rgba(6, 10, 19, 0.98) 100%) !important;
+  border: 1px solid rgba(0, 242, 254, 0.4) !important;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.9), 0 0 50px rgba(0, 242, 254, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
+}
+
+.checkout-modal-backdrop.open .checkout-modal-container {
+  transform: scale(1) translateY(0) !important;
+}
+
+/* Ambient Top Laser / Neon Beam */
+.checkout-modal-beam {
+  height: 3px;
+  width: 100%;
+  background: linear-gradient(90deg, #0284C7 0%, #2563EB 50%, #7C3AED 100%);
+  box-shadow: 0 0 16px rgba(2, 132, 199, 0.4);
+}
+
+[data-theme="dark"] .checkout-modal-beam {
+  background: linear-gradient(90deg, #00F2FE 0%, #4FACFE 50%, #A855F7 100%);
+  box-shadow: 0 0 18px #00F2FE;
+}
+
+/* ==========================================================================
+   Header Elements
+   ========================================================================== */
+.checkout-modal-header {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 1.25rem 1.6rem 0.75rem 1.6rem !important;
+}
+
+.checkout-modal-security-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(2, 132, 199, 0.08);
+  border: 1px solid rgba(2, 132, 199, 0.25);
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #0284C7;
+  text-transform: uppercase;
+}
+
+[data-theme="dark"] .checkout-modal-security-badge {
+  background: rgba(0, 242, 254, 0.1);
+  border-color: rgba(0, 242, 254, 0.3);
+  color: #00F2FE;
+}
+
+.checkout-modal-close-btn {
+  background: rgba(15, 23, 42, 0.06);
+  border: 1px solid rgba(15, 23, 42, 0.1);
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #475569;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.checkout-modal-close-btn:hover {
+  background: rgba(15, 23, 42, 0.12);
+  color: #0F172A;
+  transform: rotate(90deg);
+}
+
+[data-theme="dark"] .checkout-modal-close-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: #94A3B8;
+}
+
+[data-theme="dark"] .checkout-modal-close-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #FFFFFF;
+}
+
+/* ==========================================================================
+   Modal Body
+   ========================================================================== */
+.checkout-modal-body {
+  padding: 0.5rem 1.6rem 1.75rem 1.6rem !important;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* Plan Preview Card */
+.checkout-plan-preview-box {
+  background: rgba(241, 245, 249, 0.85);
+  border: 1px solid rgba(2, 132, 199, 0.2);
+  border-radius: 16px;
+  padding: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset 0 1px 3px rgba(15, 23, 42, 0.04);
+}
+
+[data-theme="dark"] .checkout-plan-preview-box {
+  background: rgba(2, 6, 23, 0.65);
+  border-color: rgba(0, 242, 254, 0.2);
+  box-shadow: none;
+}
+
+.checkout-plan-preview-box::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -30%;
+  width: 140px;
+  height: 140px;
+  background: radial-gradient(circle, rgba(2, 132, 199, 0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+[data-theme="dark"] .checkout-plan-preview-box::before {
+  background: radial-gradient(circle, rgba(0, 242, 254, 0.18) 0%, transparent 70%);
+}
+
+.checkout-plan-title-col {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.checkout-plan-name {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #0F172A;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+[data-theme="dark"] .checkout-plan-name {
+  color: #FFFFFF;
+}
+
+.checkout-plan-cycle-tag {
+  font-size: 0.75rem;
+  color: #475569;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+[data-theme="dark"] .checkout-plan-cycle-tag {
+  color: #94A3B8;
+}
+
+.checkout-pulse-dot {
+  color: #0284C7;
+}
+
+[data-theme="dark"] .checkout-pulse-dot {
+  color: #00F2FE;
+}
+
+.checkout-plan-price-col {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.checkout-plan-price-val {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 900;
+  color: #0284C7;
+  text-shadow: 0 0 15px rgba(2, 132, 199, 0.25);
+  line-height: 1;
+}
+
+[data-theme="dark"] .checkout-plan-price-val {
+  color: #00F2FE;
+  text-shadow: 0 0 20px rgba(0, 242, 254, 0.5);
+}
+
+.checkout-plan-price-sub {
+  font-size: 0.72rem;
+  color: #64748B;
+  margin-top: 4px;
+}
+
+[data-theme="dark"] .checkout-plan-price-sub {
+  color: #94A3B8;
+}
+
+/* ==========================================================================
+   Account Identifier Input Group
+   ========================================================================== */
+.checkout-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.checkout-input-label {
+  font-size: 0.825rem;
+  font-weight: 600;
+  color: #1E293B;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+[data-theme="dark"] .checkout-input-label {
+  color: #E2E8F0;
+}
+
+.checkout-input-hint {
+  font-size: 0.72rem;
+  color: #64748B;
+  font-weight: 400;
+}
+
+.checkout-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.checkout-input-icon {
+  position: absolute;
+  left: 14px;
+  color: #64748B;
+  pointer-events: none;
+  transition: color 0.2s ease;
+}
+
+.checkout-input-field {
+  width: 100%;
+  background: #FFFFFF;
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  border-radius: 12px;
+  padding: 12px 14px 12px 42px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  color: #0F172A;
+  outline: none;
+  transition: all 0.25s ease;
+}
+
+[data-theme="dark"] .checkout-input-field {
+  background: rgba(2, 6, 23, 0.85);
+  border-color: rgba(255, 255, 255, 0.12);
+  color: #FFFFFF;
+}
+
+.checkout-input-field::placeholder {
+  color: #94A3B8;
+}
+
+.checkout-input-field:focus {
+  border-color: #0284C7;
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.18);
+  background: #FFFFFF;
+}
+
+[data-theme="dark"] .checkout-input-field:focus {
+  border-color: #00F2FE;
+  box-shadow: 0 0 20px rgba(0, 242, 254, 0.35), inset 0 0 10px rgba(0, 242, 254, 0.1);
+  background: rgba(2, 6, 23, 0.95);
+}
+
+.checkout-input-field:focus + .checkout-input-icon,
+.checkout-input-wrapper:focus-within .checkout-input-icon {
+  color: #0284C7;
+}
+
+[data-theme="dark"] .checkout-input-field:focus + .checkout-input-icon,
+[data-theme="dark"] .checkout-input-wrapper:focus-within .checkout-input-icon {
+  color: #00F2FE;
+}
+
+/* ==========================================================================
+   Payment Rail Chips
+   ========================================================================== */
+.checkout-payment-methods {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.checkout-rail-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(241, 245, 249, 0.95);
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  border-radius: 8px;
+  padding: 5px 9px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #334155;
+}
+
+.checkout-rail-pill svg {
+  color: #0284C7;
+}
+
+[data-theme="dark"] .checkout-rail-pill {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.08);
+  color: #CBD5E1;
+}
+
+[data-theme="dark"] .checkout-rail-pill svg {
+  color: #00F2FE;
+}
+
+/* ==========================================================================
+   CTA Button
+   ========================================================================== */
+.checkout-cta-btn {
+  width: 100%;
+  padding: 14px 20px;
+  border-radius: 14px;
+  border: none;
+  background: linear-gradient(135deg, #0284C7 0%, #2563EB 50%, #7C3AED 100%);
+  color: #FFFFFF;
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  box-shadow: 0 10px 25px rgba(2, 132, 199, 0.35);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+[data-theme="dark"] .checkout-cta-btn {
+  background: linear-gradient(135deg, #00F2FE 0%, #0284C7 50%, #6366F1 100%);
+  color: #030712;
+  box-shadow: 0 10px 25px rgba(0, 242, 254, 0.35), 0 0 20px rgba(2, 132, 199, 0.2);
+}
+
+.checkout-cta-btn::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(60deg, transparent 30%, rgba(255, 255, 255, 0.35) 50%, transparent 70%);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.checkout-cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 35px rgba(2, 132, 199, 0.45);
+}
+
+[data-theme="dark"] .checkout-cta-btn:hover {
+  box-shadow: 0 14px 35px rgba(0, 242, 254, 0.5), 0 0 30px rgba(99, 102, 241, 0.35);
+}
+
+.checkout-cta-btn:hover::after {
+  transform: translateX(100%);
+}
+
+.checkout-cta-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Assurance Footer Note */
+.checkout-guarantee-note {
+  text-align: center;
+  font-size: 0.72rem;
+  color: #64748B;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+/* ==========================================================================
+   Responsive Adaptations
+   ========================================================================== */
+@media (max-width: 580px) {
+  .checkout-modal-container {
+    max-width: 95vw !important;
+    border-radius: 20px !important;
+  }
+  .checkout-modal-header {
+    padding: 1rem 1.25rem 0.5rem 1.25rem !important;
+  }
+  .checkout-modal-body {
+    padding: 0.5rem 1.25rem 1.25rem 1.25rem !important;
+  }
+}

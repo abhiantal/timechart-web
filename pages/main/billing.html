@@ -1,0 +1,1115 @@
+<!-- ====================================================================
+     PAGE: BILLING (Subscription Plans & Monetization Reference)
+     Synchronized 100% with time_chart/Documentation/Subscription_And_Monetization.md
+     ==================================================================== -->
+<section class="section">
+  <div class="container section-content">
+    
+    <!-- Hero & Cycle Toggle -->
+    <div class="billing-hero reveal-on-scroll">
+      <div class="badge badge-emerald mb-sm">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+        <span>Time Chart Monetization Architecture</span>
+      </div>
+      <h2 class="text-h2">Transparent Pricing &amp; Flexible Passes</h2>
+      <p class="section-subtitle">
+        Engineered for students on crunch weeks, daily habit builders, batch coaches, and study groups.
+      </p>
+
+      <!-- Monthly / Annual Toggle Switch -->
+      <div class="billing-toggle-wrapper">
+        <span class="billing-toggle-label active" id="billing-label-monthly">Monthly Billing</span>
+        <div class="billing-switch" id="billing-cycle-switch" role="switch" aria-checked="false" tabindex="0" aria-label="Toggle annual billing">
+          <div class="billing-switch-thumb"></div>
+        </div>
+        <span class="billing-toggle-label" id="billing-label-annual">Annual Billing</span>
+        <span class="billing-discount-badge" role="button" title="Switch to annual billing">Save up to 33%</span>
+      </div>
+    </div>
+
+    <!-- ==================================================================
+         SECTION 1: QUICK PRICING & OVERVIEW TABLE
+         ================================================================== -->
+    <div class="billing-sub-header reveal-on-scroll">
+      <div class="billing-sub-header-title">
+        <span class="text-cyan">1.</span> Quick Pricing &amp; Overview Table
+      </div>
+      <span class="billing-sub-header-desc">High-level comparison across all tiers, sachet passes &amp; packs</span>
+    </div>
+
+    <div class="comparison-table-wrapper reveal-on-scroll" style="margin-bottom: var(--space-3xl);">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th style="min-width: 190px;">Plan / Pass</th>
+            <th style="min-width: 140px;">Price</th>
+            <th style="min-width: 170px;">Billing Cycle</th>
+            <th style="min-width: 220px;">Best For</th>
+            <th style="min-width: 290px;">Key Advantage</th>
+            <th style="min-width: 130px; text-align: right;">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Free -->
+          <tr>
+            <td>
+              <div class="font-bold text-primary flex-center" style="justify-content: flex-start; gap: 8px;">
+                <span class="table-pill">Plan 1: Free (Starter)</span>
+              </div>
+            </td>
+            <td><strong class="text-primary" style="font-size: 1.05rem;">₹0</strong></td>
+            <td><span class="badge badge-subtle">Free Forever</span></td>
+            <td class="text-secondary">Beginners &amp; casual users</td>
+            <td>Core habit tracker, 10 tasks/week, 1-on-1 chats</td>
+            <td style="text-align: right;">
+              <button type="button" class="btn btn-secondary btn-xs" data-billing-plan="free">Active</button>
+            </td>
+          </tr>
+
+          <!-- Crunch Pass -->
+          <tr>
+            <td>
+              <div class="font-bold text-primary flex-center" style="justify-content: flex-start; gap: 8px;">
+                <span class="table-pill" style="color: var(--color-cyan);"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon> Crunch Pass</span>
+              </div>
+            </td>
+            <td><strong style="color: var(--color-cyan); font-size: 1.05rem;">₹9</strong></td>
+            <td><span class="badge badge-cyan" style="font-size: 0.72rem;">24 Hours (One-time UPI)</span></td>
+            <td class="text-secondary">Students on exam/deadline days</td>
+            <td>Instant 24-hr Pro unlock without recurring auto-debit</td>
+            <td style="text-align: right;">
+              <button type="button" class="btn btn-outline btn-xs" data-billing-plan="pass_24h" data-billing-cycle="one_time" data-plan-title="Crunch Pass (24 Hours)" data-price="9">Unlock ₹9</button>
+            </td>
+          </tr>
+
+          <!-- Sprint Pass -->
+          <tr>
+            <td>
+              <div class="font-bold text-primary flex-center" style="justify-content: flex-start; gap: 8px;">
+                <span class="table-pill" style="color: #38BDF8;">Sprint Pass</span>
+                <span class="badge badge-cyan" style="font-size: 0.65rem; padding: 1px 6px;">Hot</span>
+              </div>
+            </td>
+            <td><strong style="color: #38BDF8; font-size: 1.05rem;">₹19</strong></td>
+            <td><span class="badge badge-cyan" style="font-size: 0.72rem;">7 Days (One-time UPI)</span></td>
+            <td class="text-secondary">Weekly sprints &amp; trial users</td>
+            <td>Full Pro access for 7 days without subscription commitment</td>
+            <td style="text-align: right;">
+              <button type="button" class="btn btn-primary btn-xs" data-billing-plan="pass_7d" data-billing-cycle="one_time" data-plan-title="Sprint Pass (7 Days)" data-price="19">Unlock ₹19</button>
+            </td>
+          </tr>
+
+          <!-- Pro -->
+          <tr class="col-pro">
+            <td class="col-pro">
+              <div class="font-bold text-primary flex-center" style="justify-content: flex-start; gap: 8px;">
+                <span class="table-pill" style="color: var(--color-cyan);">Plan 2: Pro (Achiever)</span>
+                <span class="badge badge-emerald" style="font-size: 0.65rem; padding: 1px 6px;">Popular</span>
+              </div>
+            </td>
+            <td class="col-pro">
+              <strong style="color: var(--color-cyan); font-size: 1.05rem;">
+                ₹<span data-price-monthly="49" data-price-annual="399">49</span>
+              </strong>
+              <span class="text-xs text-muted" data-price-period>/ mo</span>
+              <div class="text-2xs text-emerald" data-annual-note style="visibility: hidden;">(₹399 / yr · Save 32%)</div>
+            </td>
+            <td class="col-pro"><span class="badge badge-subtle">Monthly / Annual Recurring</span></td>
+            <td class="col-pro text-secondary">Daily active habit builders</td>
+            <td class="col-pro"><strong>Unlimited Day Tasks</strong>, Diary, 1 Community (50 members)</td>
+            <td class="col-pro" style="text-align: right;">
+              <button type="button" class="btn btn-primary btn-xs" data-billing-plan="pro" data-plan-title="Pro (Achiever)">Upgrade</button>
+            </td>
+          </tr>
+
+          <!-- Ultimate -->
+          <tr>
+            <td>
+              <div class="font-bold text-primary flex-center" style="justify-content: flex-start; gap: 8px;">
+                <span class="table-pill">Plan 3: Ultimate (Elite)</span>
+              </div>
+            </td>
+            <td>
+              <strong class="text-primary" style="font-size: 1.05rem;">
+                ₹<span data-price-monthly="99" data-price-annual="799">99</span>
+              </strong>
+              <span class="text-xs text-muted" data-price-period>/ mo</span>
+              <div class="text-2xs text-emerald" data-annual-note style="visibility: hidden;">(₹799 / yr · Save 33%)</div>
+            </td>
+            <td><span class="badge badge-subtle">Monthly / Annual Recurring</span></td>
+            <td class="text-secondary">Power users &amp; batch leaders</td>
+            <td>Unlimited everything, full Nova AI, 2 Communities (100 members each)</td>
+            <td style="text-align: right;">
+              <button type="button" class="btn btn-secondary btn-xs" data-billing-plan="ultimate" data-plan-title="Ultimate (Elite)">Go Ultimate</button>
+            </td>
+          </tr>
+
+          <!-- Creator & Mentor VIP -->
+          <tr>
+            <td>
+              <div class="font-bold text-primary flex-center" style="justify-content: flex-start; gap: 8px;">
+                <span class="table-pill" style="color: var(--color-amber);">Creator &amp; Mentor VIP</span>
+              </div>
+            </td>
+            <td>
+              <strong class="text-primary" style="font-size: 1.05rem;">
+                ₹<span data-price-monthly="199" data-price-annual="1599">199</span>
+              </strong>
+              <span class="text-xs text-muted" data-price-period>/ mo</span>
+              <div class="text-2xs text-emerald" data-annual-note style="visibility: hidden;">(₹1,599 / yr · Save 33%)</div>
+            </td>
+            <td><span class="badge badge-subtle">Monthly / Annual Recurring</span></td>
+            <td class="text-secondary">Coaches, mentors, influencers</td>
+            <td>3 Communities (Up to 500 members each), verified gold checkmark</td>
+            <td style="text-align: right;">
+              <button type="button" class="btn btn-secondary btn-xs" data-billing-plan="creator_vip" data-plan-title="Creator &amp; Mentor VIP">Join VIP</button>
+            </td>
+          </tr>
+
+          <!-- Squad -->
+          <tr>
+            <td>
+              <div class="font-bold text-primary flex-center" style="justify-content: flex-start; gap: 8px;">
+                <span class="table-pill" style="color: var(--color-violet);">Squad (Family Pack)</span>
+              </div>
+            </td>
+            <td>
+              <strong style="color: var(--color-violet); font-size: 1.05rem;">
+                ₹<span data-price-monthly="299" data-price-annual="2399">299</span>
+              </strong>
+              <span class="text-xs text-muted" data-price-period>/ mo</span>
+              <div class="text-2xs text-emerald" data-annual-note style="visibility: hidden;">(₹2,399 / yr · Save 33%)</div>
+            </td>
+            <td><span class="badge badge-violet" style="font-size: 0.72rem;">Monthly / Annual Recurring</span></td>
+            <td class="text-secondary">4 Friends / Family members</td>
+            <td>4 accounts share Ultimate perks (~₹75 / person / month)</td>
+            <td style="text-align: right;">
+              <button type="button" class="btn btn-outline btn-xs" data-billing-plan="squad" data-plan-title="Squad (Family Pack)" data-billing-cycle="monthly">Get Squad</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ==================================================================
+         SECTION 2: CORE SUBSCRIPTION PLANS
+         ================================================================== -->
+    <div class="billing-sub-header reveal-on-scroll">
+      <div class="billing-sub-header-title">
+        <span class="text-cyan">2.</span> Core Subscription Plans
+      </div>
+      <span class="billing-sub-header-desc">Recurring plans with full background synchronization</span>
+    </div>
+
+    <!-- Core Plans Grid -->
+    <div class="pricing-grid">
+      
+      <!-- Tier 1: Free (Starter) -->
+      <div class="pricing-card reveal-on-scroll delay-100">
+        <h3 class="pricing-tier-name">Plan 1: Free (Starter)</h3>
+        <p class="pricing-tier-desc">Core habit &amp; task tracking for beginners &amp; casual users.</p>
+        <div class="pricing-price-box">
+          <span class="pricing-currency">₹</span>
+          <span class="pricing-amount">0</span>
+          <span class="pricing-period">Free Forever</span>
+        </div>
+        <div class="pricing-billed-annually">No credit card required</div>
+        
+        <div class="pricing-features-list">
+          <div class="pricing-feature-item">
+            <svg class="pricing-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span><strong>Day Tasks:</strong> Max 10 tasks / week <span class="text-xs text-muted">(7 completed, AI verification must)</span></span>
+          </div>
+          <div class="pricing-feature-item">
+            <svg class="pricing-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span><strong>Weekly Tasks:</strong> 1 active task / week <span class="text-xs text-muted">(5 scheduled days, complete all, AI verification must)</span></span>
+          </div>
+          <div class="pricing-feature-item">
+            <svg class="pricing-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span><strong>Long Goals:</strong> 1 active goal <span class="text-xs text-muted">(3 items &amp; 1 done, AI verify must)</span> + 1 Bucket</span>
+          </div>
+          <div class="pricing-feature-item">
+            <svg class="pricing-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span><strong>Personal Diary:</strong> Up to 15 entries / mo <span class="text-xs text-muted">(2 images/entry, no video/audio · 2 links · 5 AI Qs)</span></span>
+          </div>
+          <div class="pricing-feature-item">
+            <svg class="pricing-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span><strong>Competitions / Challenges:</strong> 2 active members <span class="text-xs text-muted">(MyCompetitionDataScreen ❌, CompetitionDetailScreen ❌)</span></span>
+          </div>
+          <div class="pricing-feature-item">
+            <svg class="pricing-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span><strong>Mentorship:</strong> Up to 2 connections <span class="text-xs text-muted">(Overview screens only, max 30-day link)</span></span>
+          </div>
+          <div class="pricing-feature-item">
+            <svg class="pricing-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span><strong>Group Creation:</strong> Up to 2 groups</span>
+          </div>
+          <div class="pricing-feature-item">
+            <svg class="pricing-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span><strong>Chat &amp; Messaging:</strong> 1-on-1 chats + Up to 2 Groups</span>
+          </div>
+          <div class="pricing-feature-item">
+            <svg class="pricing-check-icon disabled" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            <span class="text-muted"><strong>Community Creation:</strong> Cannot create (Join only)</span>
+          </div>
+          <div class="pricing-feature-item">
+            <svg class="pricing-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span><strong>Social Posts:</strong> Max 2 posts / day</span>
+          </div>
+          <div class="pricing-feature-item">
+            <svg class="pricing-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span><strong>Leaderboard:</strong> See own rank only <span class="text-xs text-muted">(Reward cards hidden)</span></span>
+          </div>
+          <div class="pricing-feature-item">
+            <svg class="pricing-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span><strong>Dashboard:</strong> Overview summary only</span>
+          </div>
+          <div class="pricing-feature-item">
+            <svg class="pricing-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span><strong>Nova AI Engine:</strong> 10,000 Tokens / day <span class="text-xs text-muted">(Task captions &amp; offline fallback)</span></span>
+          </div>
+          <div class="pricing-feature-item">
+            <svg class="pricing-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span><strong>Profile Badge:</strong> Standard Profile</span>
+          </div>
+        </div>
+
+        <button type="button" class="btn btn-secondary btn-md" data-billing-plan="free">Get Started Free</button>
+      </div>
+
+      <!-- Tier 2: Pro (Achiever) [Featured] -->
+      <div class="pricing-card featured reveal-on-scroll delay-200">
+        <span class="pricing-popular-tag">Most Popular Choice</span>
+        <h3 class="pricing-tier-name">Plan 2: Pro (Achiever)</h3>
+        <p class="pricing-tier-desc">For serious daily active builders and students.</p>
+        <div class="pricing-price-box">
+          <span class="pricing-currency">₹</span>
+          <span class="pricing-amount" data-price-monthly="49" data-price-annual="399">49</span>
+          <span class="pricing-period" data-price-period>/ mo</span>
+        </div>
+        <div class="pricing-billed-annually" data-annual-note style="visibility: hidden;">₹399 billed annually (Save 32%)</div>
+
+        <div class="pricing-features-list">
+          <div class="pricing-feature-item font-semibold text-primary">
+            <svg class="pricing-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span><strong>Day Tasks:</strong> Unlimited</span>
+          </div>
+          <div class="pricing-feature-item">
+            <svg class="pricing-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span><strong>Weekly Tasks &amp; Goals:</strong> Up to 3 Weekly Tasks, 2 Active Long Goals &amp; 3 Buckets</span>
+          </div>
+          <div class="pricing-feature-item">
+            <svg class="pricing-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span><strong>Personal Diary:</strong> Full Access (Unlimited entries · 4 media with video &amp; audio · 5 links · 7 AI Qs)</span>
+          </div>
+          <div class="pricing-feature-item">
+            <svg class="pricing-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span><strong>Community Creation:</strong> 1 Community <span class="text-xs text-muted">(Up to 50 members)</span></span>
+          </div>
+          <div class="pricing-feature-item">
+            <svg class="pricing-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span><strong>Competitions:</strong> Up to 3 active members <span class="text-xs text-muted">(MyCompetitionDataScreen ❌, CompetitionDetailScreen ✅)</span></span>
+          </div>
+          <div class="pricing-feature-item">
+            <svg class="pricing-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span><strong>Mentorship:</strong> Up to 5 connections <span class="text-xs text-muted">(All 10 screens + 6-month &amp; Always link)</span></span>
+          </div>
+          <div class="pricing-feature-item">
+            <svg class="pricing-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span><strong>Group Creation:</strong> Up to 5 groups</span>
+          </div>
+          <div class="pricing-feature-item">
+            <svg class="pricing-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span><strong>Chat &amp; Messaging:</strong> 1-on-1 + Up to 5 Groups + 1 Community</span>
+          </div>
+          <div class="pricing-feature-item">
+            <svg class="pricing-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span><strong>Social Posts:</strong> Up to 5 posts / day</span>
+          </div>
+          <div class="pricing-feature-item">
+            <svg class="pricing-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span><strong>Leaderboard:</strong> See all global ranks <span class="text-xs text-muted">(Cards static, Reward cards hidden)</span></span>
+          </div>
+          <div class="pricing-feature-item">
+            <svg class="pricing-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span><strong>Dashboard:</strong> Main + Detail screens</span>
+          </div>
+          <div class="pricing-feature-item">
+            <svg class="pricing-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span><strong>Nova AI Engine:</strong> 50,000 Tokens / day <span class="text-xs text-muted">(Auto diary questions, task &amp; goal breakdown)</span></span>
+          </div>
+          <div class="pricing-feature-item">
+            <svg class="pricing-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span><strong>Profile Badge:</strong> 🥉 Pro Bronze Badge</span>
+          </div>
+        </div>
+
+        <button type="button" class="btn btn-primary btn-md btn-shimmer" data-billing-plan="pro" data-plan-title="Pro (Achiever)">Upgrade to Pro</button>
+      </div>
+
+      <!-- Tier 3: Ultimate (Elite) -->
+      <div class="pricing-card reveal-on-scroll delay-300">
+        <h3 class="pricing-tier-name">Plan 3: Ultimate (Elite)</h3>
+        <p class="pricing-tier-desc">Unrestricted power features for high performers &amp; batch leaders.</p>
+        <div class="pricing-price-box">
+          <span class="pricing-currency">₹</span>
+          <span class="pricing-amount" data-price-monthly="99" data-price-annual="799">99</span>
+          <span class="pricing-period" data-price-period>/ mo</span>
+        </div>
+        <div class="pricing-billed-annually" data-annual-note style="visibility: hidden;">₹799 billed annually (Save 33%)</div>
+
+        <div class="pricing-features-list">
+          <div class="pricing-feature-item font-semibold text-primary">
+            <svg class="pricing-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span><strong>Day, Weekly, Goals &amp; Buckets:</strong> Unlimited</span>
+          </div>
+          <div class="pricing-feature-item">
+            <svg class="pricing-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span><strong>Community Creation:</strong> 2 Communities <span class="text-xs text-muted">(Up to 100 members each)</span></span>
+          </div>
+          <div class="pricing-feature-item">
+            <svg class="pricing-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span><strong>Personal Diary:</strong> Full Access + AI Insights <span class="text-xs text-muted">(Unlimited entries · 4 media · unlim links · 8 AI Qs)</span></span>
+          </div>
+          <div class="pricing-feature-item">
+            <svg class="pricing-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span><strong>Competitions:</strong> Up to 5 active members <span class="text-xs text-muted">(MyCompetitionDataScreen ❌, CompetitionDetailScreen ✅)</span></span>
+          </div>
+          <div class="pricing-feature-item">
+            <svg class="pricing-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span><strong>Mentorship:</strong> Up to 10 connections <span class="text-xs text-muted">(All 10 screens + Custom Permissions)</span></span>
+          </div>
+          <div class="pricing-feature-item">
+            <svg class="pricing-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span><strong>Group Creation:</strong> Up to 15 groups</span>
+          </div>
+          <div class="pricing-feature-item">
+            <svg class="pricing-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span><strong>Chat &amp; Messaging:</strong> Unlimited 1-on-1 + Up to 15 Groups + 2 Communities</span>
+          </div>
+          <div class="pricing-feature-item">
+            <svg class="pricing-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span><strong>Social Posts:</strong> Unlimited posts / day</span>
+          </div>
+          <div class="pricing-feature-item">
+            <svg class="pricing-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span><strong>Leaderboard:</strong> All global ranks + Expandable detail cards <span class="text-xs text-muted">(Reward cards hidden)</span></span>
+          </div>
+          <div class="pricing-feature-item">
+            <svg class="pricing-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span><strong>Dashboard:</strong> Deep Insights + PDF Analytics Export</span>
+          </div>
+          <div class="pricing-feature-item">
+            <svg class="pricing-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span><strong>Nova AI Engine:</strong> 150,000 Tokens / day <span class="text-xs text-muted">(Deep reasoning audits &amp; vision verification)</span></span>
+          </div>
+          <div class="pricing-feature-item">
+            <svg class="pricing-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span><strong>Profile Badge:</strong> 👑 Elite Gold Crown Badge</span>
+          </div>
+        </div>
+
+        <button type="button" class="btn btn-secondary btn-md" data-billing-plan="ultimate" data-plan-title="Ultimate (Elite)">Go Ultimate</button>
+      </div>
+
+      <!-- Tier 4: Creator & Mentor VIP -->
+      <div class="pricing-card reveal-on-scroll delay-400">
+        <h3 class="pricing-tier-name">Creator &amp; Mentor VIP</h3>
+        <p class="pricing-tier-desc">For coaches, mentors, influencers &amp; batch leaders.</p>
+        <div class="pricing-price-box">
+          <span class="pricing-currency">₹</span>
+          <span class="pricing-amount" data-price-monthly="199" data-price-annual="1599">199</span>
+          <span class="pricing-period" data-price-period>/ mo</span>
+        </div>
+        <div class="pricing-billed-annually" data-annual-note style="visibility: hidden;">₹1,599 billed annually (Save 33%)</div>
+
+        <div class="pricing-features-list">
+          <div class="pricing-feature-item font-semibold text-primary">
+            <svg class="pricing-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span><strong>All Ultimate Plan Features Included</strong></span>
+          </div>
+          <div class="pricing-feature-item">
+            <svg class="pricing-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span><strong>Community Creation:</strong> 3 Communities <span class="text-xs text-muted">(Up to 500 members each)</span></span>
+          </div>
+          <div class="pricing-feature-item">
+            <svg class="pricing-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span><strong>Group Creation:</strong> Unlimited groups</span>
+          </div>
+          <div class="pricing-feature-item">
+            <svg class="pricing-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span><strong>Competitions &amp; Tournaments:</strong> Up to 5 active members <span class="text-xs text-muted">(Host tournaments · MyCompetitionDataScreen ✅ &amp; CompetitionDetailScreen ✅)</span></span>
+          </div>
+          <div class="pricing-feature-item">
+            <svg class="pricing-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span><strong>Mentorship:</strong> Unlimited mentees <span class="text-xs text-muted">(Custom Permissions + Profile Card)</span></span>
+          </div>
+          <div class="pricing-feature-item">
+            <svg class="pricing-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span><strong>Send Encouragement Boosts:</strong> (SendEncouragementScreen)</span>
+          </div>
+          <div class="pricing-feature-item">
+            <svg class="pricing-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span><strong>Chat &amp; Messaging:</strong> Unlimited 1-on-1 + Unlimited Groups + 3 Communities</span>
+          </div>
+          <div class="pricing-feature-item">
+            <svg class="pricing-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span><strong>Social Reach:</strong> Unlimited + 1 Free Pinned Community Post / week</span>
+          </div>
+          <div class="pricing-feature-item">
+            <svg class="pricing-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span><strong>Leaderboard:</strong> All global ranks + Expandable cards + <strong style="color: var(--color-emerald);">Reward cards shown</strong></span>
+          </div>
+          <div class="pricing-feature-item">
+            <svg class="pricing-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span><strong>Dashboard:</strong> Deep Insights + Mentee Stats</span>
+          </div>
+          <div class="pricing-feature-item">
+            <svg class="pricing-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span><strong>Nova AI Engine:</strong> 500,000 Tokens / day <span class="text-xs text-muted">(Mentee audits &amp; challenge gen)</span></span>
+          </div>
+          <div class="pricing-feature-item">
+            <svg class="pricing-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span><strong>Profile Badge:</strong> 🌟 Verified Gold Checkmark</span>
+          </div>
+        </div>
+
+        <button type="button" class="btn btn-secondary btn-md" data-billing-plan="creator_vip" data-plan-title="Creator &amp; Mentor VIP">Join VIP Creator</button>
+      </div>
+
+    </div>
+
+    <!-- ==================================================================
+         SECTION 3: LOW-BUDGET SACHET PASSES & FREE GAMIFIED UNLOCKS
+         ================================================================== -->
+    <div class="billing-sub-header reveal-on-scroll">
+      <div class="billing-sub-header-title">
+        <span class="text-cyan">3.</span> Low-Budget Sachet Passes &amp; Free Gamified Unlocks
+      </div>
+      <span class="billing-sub-header-desc">1-Tap UPI (GPay / PhonePe) &bull; Zero Recurring Auto-Debit Risk</span>
+    </div>
+
+    <div class="passes-grid reveal-on-scroll">
+      
+      <!-- Pass 1: Crunch Pass (24 Hours) -->
+      <div class="pass-card theme-cyan">
+        <div class="pass-meta-header">
+          <span class="pass-telemetry-code">// SYS-PASS: 24H_BURST</span>
+          <span class="pass-pill-badge cyan">
+            <span class="pass-pulse-dot"></span>
+            1-Tap UPI
+          </span>
+        </div>
+        <div class="pass-price-hero">
+          <span class="pass-price-currency">₹</span>
+          <span class="pass-price-num">9</span>
+          <span class="pass-price-badge highlight">Single Pass</span>
+        </div>
+        <div class="pass-name">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="color: #00F2FE;"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+          Crunch Pass
+        </div>
+        <p class="pass-desc">
+          Instant 24-hr Pro unlock without recurring auto-debit. Ideal for students on intense exam and deadline days.
+        </p>
+        <div class="pass-perks-list">
+          <div class="pass-perk-item">
+            <svg class="pass-perk-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span>Full Pro Tier Access for 1 Full Day (24 Hours)</span>
+          </div>
+          <div class="pass-perk-item">
+            <svg class="pass-perk-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span>Zero Recurring Auto-Debit Risk</span>
+          </div>
+          <div class="pass-perk-item">
+            <svg class="pass-perk-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span>1-Tap UPI QR / Instant App Checkout</span>
+          </div>
+        </div>
+        <button type="button" class="btn-pass-cyber" data-billing-plan="pass_24h" data-billing-cycle="one_time" data-plan-title="Crunch Pass (24 Hours)" data-price="9">
+          <span>Unlock for ₹9</span>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </button>
+      </div>
+
+      <!-- Pass 2: Sprint Pass (7 Days) [HOT / POPULAR] -->
+      <div class="pass-card theme-sprint">
+        <span class="pass-hot-badge">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c1.1 0 2 .9 2 2v1.1c2.83.48 5 2.94 5 5.9 0 3.31-2.69 6-6 6s-6-2.69-6-6c0-2.96 2.17-5.42 5-5.9V4c0-1.1.9-2 2-2zm-1 9v2h2v-2h-2z"></path></svg>
+          Most Popular Sachet
+        </span>
+        <div class="pass-meta-header" style="margin-top: 4px;">
+          <span class="pass-telemetry-code">// SYS-PASS: 7D_SPRINT</span>
+          <span class="pass-pill-badge cyan">
+            <span class="pass-pulse-dot"></span>
+            1-Tap UPI
+          </span>
+        </div>
+        <div class="pass-price-hero">
+          <span class="pass-price-currency">₹</span>
+          <span class="pass-price-num">19</span>
+          <span class="pass-price-badge highlight">Best Value</span>
+        </div>
+        <div class="pass-name">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="color: #38BDF8;"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"></path><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"></path></svg>
+          Sprint Pass
+        </div>
+        <p class="pass-desc">
+          Full Pro access for 7 days without subscription commitment or recurring banking auto-debits.
+        </p>
+        <div class="pass-perks-list">
+          <div class="pass-perk-item">
+            <svg class="pass-perk-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span>Full 7-Day Unrestricted Pro Tier Access</span>
+          </div>
+          <div class="pass-perk-item">
+            <svg class="pass-perk-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span>50,000 Nova AI Tokens/day &bull; Unlimited Tasks</span>
+          </div>
+          <div class="pass-perk-item">
+            <svg class="pass-perk-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span>Zero Recurring Auto-Debit Risk</span>
+          </div>
+        </div>
+        <button type="button" class="btn-pass-cyber primary" data-billing-plan="pass_7d" data-billing-cycle="one_time" data-plan-title="Sprint Pass (7 Days)" data-price="19">
+          <span>Unlock for ₹19</span>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </button>
+      </div>
+
+      <!-- Reward 1: 7-Day Streak -->
+      <div class="pass-card theme-emerald">
+        <div class="pass-meta-header">
+          <span class="pass-telemetry-code">// SYS-PROOF: STREAK_7D</span>
+          <span class="pass-pill-badge emerald">
+            <span class="pass-pulse-dot"></span>
+            15 Days Pass
+          </span>
+        </div>
+        <div class="pass-price-hero">
+          <span class="pass-price-currency" style="color: #10B981; text-shadow: 0 0 15px rgba(16, 185, 129, 0.4);">₹</span>
+          <span class="pass-price-num" style="color: #10B981; text-shadow: 0 0 25px rgba(16, 185, 129, 0.4);">0</span>
+          <span class="pass-price-badge free">Free Reward</span>
+        </div>
+        <div class="pass-name">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="color: #10B981;"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"></path></svg>
+          7-Day Streak Reward
+        </div>
+        <p class="pass-desc">
+          Maintain your daily 7-day task streak with verified AI proof to earn 15 full days of Pro access completely free.
+        </p>
+        <div class="pass-perks-list">
+          <div class="pass-perk-item">
+            <svg class="pass-perk-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span>7-Day Mandatory AI Proof Verification</span>
+          </div>
+          <div class="pass-perk-item">
+            <svg class="pass-perk-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span>15 Full Days Pro Tier Access (₹0)</span>
+          </div>
+          <div class="pass-perk-item">
+            <svg class="pass-perk-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span>Unlimited Tasks &bull; 1 Community &bull; Bronze Badge</span>
+          </div>
+        </div>
+        <button type="button" class="btn-pass-cyber emerald-glow" data-scroll-rules>
+          <span>Auto-Unlocked on Streak</span>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+      </div>
+
+      <!-- Reward 2: Referral Reward -->
+      <div class="pass-card theme-purple">
+        <div class="pass-meta-header">
+          <span class="pass-telemetry-code">// SYS-INVITE: 3_FRIENDS</span>
+          <span class="pass-pill-badge purple">
+            <span class="pass-pulse-dot"></span>
+            30 Days Pass
+          </span>
+        </div>
+        <div class="pass-price-hero">
+          <span class="pass-price-currency" style="color: #A855F7; text-shadow: 0 0 15px rgba(168, 85, 247, 0.4);">₹</span>
+          <span class="pass-price-num" style="color: #A855F7; text-shadow: 0 0 25px rgba(168, 85, 247, 0.4);">0</span>
+          <span class="pass-price-badge free">Free Reward</span>
+        </div>
+        <div class="pass-name">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="color: #A855F7;"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          Referral Reward
+        </div>
+        <p class="pass-desc">
+          Invite 3 friends who complete onboarding on Time Chart to automatically unlock 30 days (1 full month) of Pro access.
+        </p>
+        <div class="pass-perks-list">
+          <div class="pass-perk-item">
+            <svg class="pass-perk-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span>Invite 3 Friends to Onboard</span>
+          </div>
+          <div class="pass-perk-item">
+            <svg class="pass-perk-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span>30 Full Days (1 Month) Pro Free (₹0)</span>
+          </div>
+          <div class="pass-perk-item">
+            <svg class="pass-perk-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span>Instant Credit Upon 3rd Install</span>
+          </div>
+        </div>
+        <button type="button" class="btn-pass-cyber purple-glow" data-scroll-rules>
+          <span>Invite 3 Friends</span>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Anti-Cheat & Gamified Free Unlock Conditions -->
+    <div class="billing-rules-card reveal-on-scroll">
+      <div class="billing-rules-header">
+        <div>
+          <span class="badge badge-emerald mb-xs">Gamified Free Pro Access</span>
+          <h4 class="billing-rule-title">Detailed Conditions &amp; Strict Anti-Cheat Verification</h4>
+        </div>
+        <span class="text-xs text-muted">Zero-bypass cryptographic &amp; Nova AI validation</span>
+      </div>
+
+      <div class="billing-rules-grid">
+        <!-- 7-Day Streak Details -->
+        <div class="billing-rule-col">
+          <div class="billing-rule-title" style="color: var(--color-emerald);">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+            🔥 7-Day Streak Reward (₹0 &rarr; 15 Days Pro Access)
+          </div>
+          <p class="text-xs text-secondary mb-sm">
+            To earn 15 days of Pro completely free, users must prove genuine consistency. All completions require <strong>mandatory AI verification</strong> to prevent bypass:
+          </p>
+          <div class="billing-rule-list">
+            <div class="billing-rule-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span><strong>Day Tasks</strong> <span class="text-muted">(Free limit: Max 10 tasks/week)</span>: Must complete at least <strong>7 tasks with mandatory AI verification</strong>.</span>
+            </div>
+            <div class="billing-rule-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span><strong>Weekly Tasks</strong> <span class="text-muted">(Free limit: 1 active task/week)</span>: Must have <strong>5 scheduled days</strong>, and user must <strong>complete all 5 days with mandatory AI verification</strong>.</span>
+            </div>
+            <div class="billing-rule-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span><strong>Long Goals / Bucket List</strong> <span class="text-muted">(Free limit: 1 active goal)</span>: Goal must contain at least <strong>3 checklist items</strong>, completing &ge;1 checklist item with <strong>mandatory AI verification</strong>.</span>
+            </div>
+          </div>
+
+          <div class="billing-anti-cheat-alert">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="flex-shrink: 0; margin-top: 1px;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            <div><strong>Anti-Cheat Enforcement:</strong> Manual checkmarks without proof are rejected. Nova AI inspects evidence (photo, text audit, completion logs) before marking a milestone valid.</div>
+          </div>
+
+          <div style="margin-top: var(--space-xs);">
+            <span class="text-xs text-muted font-semibold">Unlocked Pro Perks for 15 Days:</span>
+            <div class="billing-perks-unlocked-tag">
+              <span class="billing-perk-pill">Unlimited Day Tasks</span>
+              <span class="billing-perk-pill">Personal Diary (4 media with video/audio, 5 links, 7 AI Qs)</span>
+              <span class="billing-perk-pill">1 Community (Up to 50 Members)</span>
+              <span class="billing-perk-pill">50,000 Nova AI Tokens/day</span>
+              <span class="billing-perk-pill">🥉 Pro Bronze Profile Badge</span>
+              <span class="billing-perk-pill">Expanded Limits (3 Weekly, 2 Goals, 3 Buckets, 5 Mentors/Mentees + All 10 Screens)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Referral Reward Details -->
+        <div class="billing-rule-col">
+          <div class="billing-rule-title" style="color: var(--color-cyan);">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            🎁 Referral Reward (₹0 &rarr; 30 Days Pro Access)
+          </div>
+          <div class="billing-rule-list">
+            <div class="billing-rule-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span><strong>Requirement:</strong> Share your unique invite link or referral code with classmates and fellow learners.</span>
+            </div>
+            <div class="billing-rule-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span><strong>Condition:</strong> Exactly <strong>3 friends</strong> must install Time Chart and complete account onboarding.</span>
+            </div>
+            <div class="billing-rule-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span><strong>Reward:</strong> Automatically grants <strong>30 Days (1 Full Month) of Pro Plan (₹0)</strong> with all Pro perks immediately active.</span>
+            </div>
+          </div>
+
+          <div class="billing-anti-cheat-alert" style="background: rgba(0, 242, 254, 0.08); border-color: rgba(0, 242, 254, 0.25); color: var(--color-cyan);">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="flex-shrink: 0; margin-top: 1px;"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+            <div><strong>Instant Credit:</strong> As soon as the 3rd friend completes account onboarding, the Pro tier activates instantly on your account with zero waiting period.</div>
+          </div>
+
+          <div style="margin-top: var(--space-xs);">
+            <span class="text-xs text-muted font-semibold">Included 30-Day Pro Privileges:</span>
+            <div class="billing-perks-unlocked-tag">
+              <span class="billing-perk-pill">Full Pro Experience (₹0)</span>
+              <span class="billing-perk-pill">Unlimited Tasks</span>
+              <span class="billing-perk-pill">Full Personal Diary</span>
+              <span class="billing-perk-pill">1 Community (50 Members)</span>
+              <span class="billing-perk-pill">50,000 Nova AI Tokens/day</span>
+              <span class="billing-perk-pill">🥉 Pro Bronze Profile Badge</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================================================================
+         SECTION 4: SPECIAL GROUP & CREATOR TIERS / SPONSORED ADS
+         ================================================================== -->
+    <div class="billing-sub-header reveal-on-scroll">
+      <div class="billing-sub-header-title">
+        <span class="text-cyan">4.</span> Special Group Tiers &amp; Sponsored Visibility
+      </div>
+      <span class="billing-sub-header-desc">Group sharing &amp; community post amplification</span>
+    </div>
+
+    <div class="grid grid-cols-2 mb-3xl reveal-on-scroll">
+      
+      <!-- Squad (Family Pack) -->
+      <div class="squad-hero-card">
+        <div class="flex-between mb-xs">
+          <span class="badge badge-violet">4 Friends / Family Pack</span>
+          <span class="badge badge-emerald text-xs font-bold">~₹75 / person / mo</span>
+        </div>
+        <h3 class="card-title text-violet">Squad (Family Pack)</h3>
+        
+        <div class="pricing-price-box">
+          <span class="pricing-currency">₹</span>
+          <span class="pricing-amount" data-price-monthly="299" data-price-annual="2399">299</span>
+          <span class="pricing-period" data-price-period>/ mo</span>
+          <span class="text-xs text-muted" style="margin-left: 6px;">(Shared across 4 accounts)</span>
+        </div>
+        <div class="pricing-billed-annually" data-annual-note style="visibility: hidden;">₹2,399 billed annually (~₹50 / person / mo &bull; Save 33%)</div>
+        
+        <p class="card-desc mb-md">
+          Up to 4 individual accounts get full <strong>Ultimate</strong> access (~₹75 / person / month) with shared squad leaderboards, joint progress tracking, and private credentials.
+        </p>
+
+        <!-- 4 Members Avatar Silhouette -->
+        <div class="squad-members-avatars">
+          <div class="squad-avatar-bubble" title="Member 1">#1</div>
+          <div class="squad-avatar-bubble" title="Member 2">#2</div>
+          <div class="squad-avatar-bubble" title="Member 3">#3</div>
+          <div class="squad-avatar-bubble" title="Member 4">#4</div>
+          <span class="text-xs text-secondary font-semibold" style="margin-left: 12px;">4 Ultimate Accounts Included (~₹75/mo each)</span>
+        </div>
+
+        <div class="pricing-features-list" style="margin-bottom: var(--space-md); padding-top: var(--space-xs);">
+          <div class="pricing-feature-item">
+            <svg class="pricing-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span>Up to 4 individual accounts get full Ultimate access</span>
+          </div>
+          <div class="pricing-feature-item">
+            <svg class="pricing-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span>Shared squad leaderboard &amp; joint progress tracking</span>
+          </div>
+          <div class="pricing-feature-item">
+            <svg class="pricing-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span>4 separate login credentials &amp; individual private data</span>
+          </div>
+          <div class="pricing-feature-item">
+            <svg class="pricing-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span>Cost: ~₹75 / person / month (or ~₹50 on annual)</span>
+          </div>
+        </div>
+
+        <button type="button" class="btn btn-secondary btn-sm" style="align-self: flex-start;" data-billing-plan="squad" data-plan-title="Squad (Family Pack)" data-billing-cycle="monthly">Get Squad Pack</button>
+      </div>
+
+      <!-- Post Boost Packages -->
+      <div class="card card-elevated">
+        <div class="flex-between mb-xs">
+          <span class="badge badge-cyan">Community Feed Boosts</span>
+          <span class="text-xs text-muted">Self-Serve</span>
+        </div>
+        <h3 class="card-title">Advertisement &amp; Sponsored Post Packages</h3>
+        <p class="card-desc mb-xs">
+          Amplify your squad announcements, recruitment posts, and community events across the feed:
+        </p>
+
+        <!-- 3 Interactive Mini Boost Cards -->
+        <div class="boost-cards-grid">
+          
+          <div class="boost-card" role="button" tabindex="0" data-billing-plan="boost_basic_3d" data-billing-cycle="one_time" data-plan-title="Basic Boost (3 Days)" data-price="29" data-boost-days="3 Days">
+            <div class="boost-card-days">3 Days</div>
+            <div class="boost-card-price">₹29</div>
+            <div class="font-bold text-xs mb-xs">Basic Boost</div>
+            <div class="boost-card-perks mb-sm">
+              &bull; "Sponsored" badge on post card<br>
+              &bull; Algorithmic feed boost in matching tags
+            </div>
+            <button type="button" class="btn btn-outline btn-xs" style="width: 100%; margin-top: auto;" data-billing-plan="boost_basic_3d" data-billing-cycle="one_time" data-plan-title="Basic Boost (3 Days)" data-price="29" data-boost-days="3 Days">Boost ₹29</button>
+          </div>
+
+          <div class="boost-card popular" role="button" tabindex="0" data-billing-plan="boost_weekly_7d" data-billing-cycle="one_time" data-plan-title="Weekly Boost (7 Days)" data-price="59" data-boost-days="7 Days">
+            <div class="boost-card-days" style="color: var(--color-cyan);">7 Days</div>
+            <div class="boost-card-price">₹59</div>
+            <div class="font-bold text-xs mb-xs">Weekly Boost</div>
+            <div class="boost-card-perks mb-sm">
+              &bull; "Sponsored" badge + Highlighted border<br>
+              &bull; Priority insertion in Social &amp; Explore feed
+            </div>
+            <button type="button" class="btn btn-primary btn-xs" style="width: 100%; margin-top: auto;" data-billing-plan="boost_weekly_7d" data-billing-cycle="one_time" data-plan-title="Weekly Boost (7 Days)" data-price="59" data-boost-days="7 Days">Boost ₹59</button>
+          </div>
+
+          <div class="boost-card" role="button" tabindex="0" data-billing-plan="boost_super_15d" data-billing-cycle="one_time" data-plan-title="Super Boost (15 Days)" data-price="99" data-boost-days="15 Days">
+            <div class="boost-card-days" style="color: var(--color-violet);">15 Days</div>
+            <div class="boost-card-price">₹99</div>
+            <div class="font-bold text-xs mb-xs">Super Boost</div>
+            <div class="boost-card-perks mb-sm">
+              &bull; 48-hr pinned spotlight on feed<br>
+              &bull; Custom CTA button (Profile/Community/Link)<br>
+              &bull; Real-time performance analytics
+            </div>
+            <button type="button" class="btn btn-outline btn-xs" style="width: 100%; margin-top: auto;" data-billing-plan="boost_super_15d" data-billing-cycle="one_time" data-plan-title="Super Boost (15 Days)" data-price="99" data-boost-days="15 Days">Boost ₹99</button>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ==================================================================
+         SECTION 5: CORE PLANS FEATURE & COMMUNITY LIMITS MATRIX
+         ================================================================== -->
+    <div class="billing-sub-header reveal-on-scroll">
+      <div class="billing-sub-header-title">
+        <span class="text-cyan">5.</span> Core Plans Feature &amp; Community Limits Matrix
+      </div>
+      <span class="billing-sub-header-desc">Complete line-by-line comparison across all tiers</span>
+    </div>
+
+    <div class="comparison-table-wrapper reveal-on-scroll">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th style="min-width: 220px;">Feature / Service</th>
+            <th style="min-width: 170px;">Plan 1: Free (₹0)</th>
+            <th class="col-pro" style="min-width: 220px;">Plan 2: Pro (₹49/mo) <span class="badge badge-cyan" style="font-size: 0.65rem; padding: 2px 6px; margin-left: 4px;">Popular</span></th>
+            <th style="min-width: 230px;">Plan 3: Ultimate (₹99/mo)</th>
+            <th style="min-width: 240px;">Creator &amp; Mentor VIP (₹199/mo)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- 1. Group Creation -->
+          <tr>
+            <td>Group Creation</td>
+            <td>Up to <strong>2</strong> groups</td>
+            <td class="col-pro">Up to <strong>5</strong> groups</td>
+            <td>Up to <strong>15</strong> groups</td>
+            <td><span class="table-pill unlimited"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Unlimited groups</span></td>
+          </tr>
+
+          <!-- 2. Community Creation -->
+          <tr>
+            <td>Community Creation</td>
+            <td>
+              <span class="table-pill lock">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                Cannot create (Join only)
+              </span>
+            </td>
+            <td class="col-pro">
+              <span class="table-pill check">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                1 Community (Up to 50 members)
+              </span>
+            </td>
+            <td>
+              <span class="table-pill check">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                2 Communities (Up to 100 members each)
+              </span>
+            </td>
+            <td>
+              <span class="table-pill check">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                3 Communities (Up to 500 members each)
+              </span>
+            </td>
+          </tr>
+
+          <!-- 3. Day Tasks -->
+          <tr>
+            <td>Day Tasks</td>
+            <td>Max 10 tasks / week<br><span class="text-xs text-muted">(7 completed, AI verification must)</span></td>
+            <td class="col-pro"><span class="table-pill unlimited"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Unlimited</span></td>
+            <td><span class="table-pill unlimited"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Unlimited</span></td>
+            <td><span class="table-pill unlimited"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Unlimited</span></td>
+          </tr>
+
+          <!-- 4. Weekly Tasks -->
+          <tr>
+            <td>Weekly Tasks</td>
+            <td>1 active task / week<br><span class="text-xs text-muted">(Must have 5 scheduled days, complete all days, AI verification must)</span></td>
+            <td class="col-pro">Up to 3 tasks / week</td>
+            <td><span class="table-pill unlimited"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Unlimited</span></td>
+            <td><span class="table-pill unlimited"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Unlimited</span></td>
+          </tr>
+
+          <!-- 5. Long Goals -->
+          <tr>
+            <td>Long Goals</td>
+            <td>1 active goal<br><span class="text-xs text-muted">(Must have 3 checklist items &amp; 1 completed, AI verification must)</span></td>
+            <td class="col-pro">Up to 2 active goals</td>
+            <td><span class="table-pill unlimited"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Unlimited</span></td>
+            <td><span class="table-pill unlimited"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Unlimited</span></td>
+          </tr>
+
+          <!-- 6. Bucket List -->
+          <tr>
+            <td>Bucket List</td>
+            <td>1 active bucket</td>
+            <td class="col-pro">Up to 3 active buckets</td>
+            <td><span class="table-pill unlimited"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Unlimited</span></td>
+            <td><span class="table-pill unlimited"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Unlimited</span></td>
+          </tr>
+
+          <!-- 7. Personal Diary -->
+          <tr>
+            <td>Personal Diary</td>
+            <td>
+              Up to <strong>15 entries / month</strong><br>
+              <span class="text-xs text-muted">&bull; 2 images/entry (no video/audio)<br>&bull; Up to 2 item links<br>&bull; No AI insights<br>&bull; AI questions up to 5</span>
+            </td>
+            <td class="col-pro">
+              <span class="table-pill check">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Full Access (Unlimited entries)
+              </span>
+              <br><span class="text-xs text-muted">&bull; 4 media/entry (video &amp; audio)<br>&bull; Up to 5 item links<br>&bull; No AI insights<br>&bull; AI questions up to 7</span>
+            </td>
+            <td>
+              <span class="table-pill check">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Full Access (Unlimited entries)
+              </span>
+              <br><span class="text-xs text-muted">&bull; 4 media/entry (video &amp; audio)<br>&bull; Unlimited item links<br>&bull; AI insights included<br>&bull; AI questions up to 8</span>
+            </td>
+            <td>
+              <span class="table-pill check">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Full Access (Unlimited entries)
+              </span>
+              <br><span class="text-xs text-muted">&bull; 4 media/entry (video &amp; audio)<br>&bull; Unlimited item links<br>&bull; AI insights included<br>&bull; AI questions up to 8</span>
+            </td>
+          </tr>
+
+          <!-- 8. Dashboard Analytics -->
+          <tr>
+            <td>Dashboard Analytics</td>
+            <td>Overview summary only</td>
+            <td class="col-pro">
+              <span class="table-pill check">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Main + Detail screens
+              </span>
+            </td>
+            <td>
+              <span class="table-pill check">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Deep Insights + PDF Export
+              </span>
+            </td>
+            <td>
+              <span class="table-pill check">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Deep Insights + Mentee Stats
+              </span>
+            </td>
+          </tr>
+
+          <!-- 9. Competitions / Challenges -->
+          <tr>
+            <td>Competitions / Challenges</td>
+            <td>2 active member<br><span class="text-xs text-muted">(MyCompetitionDataScreen ❌, CompetitionDetailScreen ❌)</span></td>
+            <td class="col-pro">Up to 3 active member<br><span class="text-xs text-muted">(MyCompetitionDataScreen ❌, CompetitionDetailScreen ✅)</span></td>
+            <td>
+              <span class="table-pill check">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Up to 5 active member
+              </span>
+              <br><span class="text-xs text-muted">(MyCompetitionDataScreen ❌, CompetitionDetailScreen ✅)</span>
+            </td>
+            <td>
+              <span class="table-pill check">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Up to 5 active member (Host tournaments)
+              </span>
+              <br><span class="text-xs text-muted">(MyCompetitionDataScreen ✅, CompetitionDetailScreen ✅)</span>
+            </td>
+          </tr>
+
+          <!-- 10. Leaderboard -->
+          <tr>
+            <td>Leaderboard</td>
+            <td>See own rank only <span class="text-xs text-muted">(Reward cards hidden)</span></td>
+            <td class="col-pro">See all global ranks <span class="text-xs text-muted">(Cards do not expand, Reward cards hidden)</span></td>
+            <td>See all global ranks + Expandable detail cards <span class="text-xs text-muted">(Reward cards hidden)</span></td>
+            <td>See all global ranks + Expandable detail cards + <strong style="color: var(--color-emerald);">Reward cards shown</strong></td>
+          </tr>
+
+          <!-- 11. Mentorship -->
+          <tr>
+            <td>Mentorship</td>
+            <td>Up to <strong>2</strong> connections<br><span class="text-xs text-muted">(Overview screens, max 30d link)</span></td>
+            <td class="col-pro">Up to <strong>5</strong> connections<br><span class="text-xs text-muted">(All 10 screens + 6mo/Always link)</span></td>
+            <td>
+              <span class="table-pill check">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Up to <strong>10</strong> connections
+              </span>
+              <br><span class="text-xs text-muted">(All 10 screens + Custom Permissions)</span>
+            </td>
+            <td>
+              <span class="table-pill unlimited">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Unlimited mentees
+              </span>
+              <br><span class="text-xs text-muted">(Custom Permissions + Send Boosts + Profile Card)</span>
+            </td>
+          </tr>
+
+          <!-- 12. Social Posts -->
+          <tr>
+            <td>Social Posts</td>
+            <td>Max 2 posts / day</td>
+            <td class="col-pro">Up to 5 posts / day</td>
+            <td><span class="table-pill unlimited"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Unlimited posts / day</span></td>
+            <td><span class="table-pill unlimited"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Unlimited + 1 Free Pinned Post/wk</span></td>
+          </tr>
+
+          <!-- 13. Chat & Messaging -->
+          <tr>
+            <td>Chat &amp; Messaging</td>
+            <td>1-on-1 chats + Up to 2 Groups</td>
+            <td class="col-pro">1-on-1 + Up to 5 Groups + 1 Community</td>
+            <td><span class="table-pill check"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Unlimited 1-on-1 + Up to 15 Groups + 2 Communities</span></td>
+            <td><span class="table-pill check"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Unlimited + Unlimited Groups + 3 Communities</span></td>
+          </tr>
+
+          <!-- 14. Nova AI Engine -->
+          <tr>
+            <td>Nova AI Engine (Automated Background)</td>
+            <td>10,000 Tokens / day<br><span class="text-xs text-muted">(Task captions &amp; offline fallback)</span></td>
+            <td class="col-pro">50,000 Tokens / day<br><span class="text-xs text-muted">(Auto diary questions, task &amp; goal breakdown)</span></td>
+            <td>150,000 Tokens / day<br><span class="text-xs text-muted">(Deep reasoning audits &amp; vision verification)</span></td>
+            <td>500,000 Tokens / day<br><span class="text-xs text-muted">(Mentee progress analysis &amp; challenge generation)</span></td>
+          </tr>
+
+          <!-- 15. Profile Badge -->
+          <tr>
+            <td>Profile Badge</td>
+            <td>Standard Profile</td>
+            <td class="col-pro">🥉 <strong>Pro Bronze Badge</strong></td>
+            <td>👑 <strong>Elite Gold Crown Badge</strong></td>
+            <td>🌟 <strong>Verified Gold Checkmark</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</section>

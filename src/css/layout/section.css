@@ -1,0 +1,106 @@
+/**
+ * NextGen Layout - Sections & Futuristic Ambient Backgrounds
+ */
+
+.page-viewport {
+  min-height: calc(100vh - 120px);
+  position: relative;
+  display: block;
+}
+
+.section {
+  position: relative;
+  padding-top: clamp(4rem, 8vw, 7.5rem);
+  padding-bottom: clamp(4rem, 8vw, 7.5rem);
+  overflow: hidden;
+}
+
+.section-sm {
+  padding-top: clamp(2.5rem, 5vw, 4.5rem);
+  padding-bottom: clamp(2.5rem, 5vw, 4.5rem);
+}
+
+.section-hero {
+  position: relative;
+  min-height: calc(100vh - 80px);
+  display: flex;
+  align-items: center;
+  padding-top: clamp(5rem, 10vw, 8.5rem);
+  padding-bottom: clamp(4rem, 8vw, 6.5rem);
+  overflow: hidden;
+}
+
+/* Ambient Futuristic Glow Orbs */
+.bg-ambient-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.55;
+  transition: opacity var(--transition-smooth);
+}
+
+.orb-cyan {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, var(--color-cyan) 0%, rgba(0, 242, 254, 0) 70%);
+  top: -150px;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0.28;
+}
+
+.orb-violet {
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, var(--color-violet) 0%, rgba(168, 85, 247, 0) 70%);
+  bottom: 5%;
+  right: -10%;
+  opacity: 0.22;
+}
+
+[data-theme="dark"] .orb-cyan {
+  opacity: 0.45;
+}
+
+[data-theme="dark"] .orb-violet {
+  opacity: 0.35;
+}
+
+/* Futuristic Cyber Grid Pattern */
+.bg-cyber-grid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(to right, var(--grid-line-color) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line-color) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 65% 55% at 50% 30%, #000 60%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 65% 55% at 50% 30%, #000 60%, transparent 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Relative container to keep content above background effects */
+.section-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* Section Header (Centered or Left-aligned) */
+.section-header {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto clamp(2.5rem, 5vw, 4rem) auto;
+}
+
+.section-header.text-left {
+  text-align: left;
+  margin-left: 0;
+}
+
+.section-header .section-subtitle {
+  margin-top: var(--space-sm);
+  font-size: clamp(1rem, 1.2vw, 1.15rem);
+}

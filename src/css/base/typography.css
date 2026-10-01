@@ -1,0 +1,111 @@
+/**
+ * NextGen Typography & Headings
+ * Futuristic heading styles, fluid scales, and text utilities.
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* Headings */
+h1, h2, h3, h4, h5, h6,
+.font-heading {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+/* Fluid Heading Scale */
+h1, .text-display {
+  font-size: clamp(2.25rem, 5vw + 1rem, 4.25rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1.08;
+}
+
+h2, .text-h2 {
+  font-size: clamp(1.75rem, 3.5vw + 0.5rem, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.18;
+}
+
+h3, .text-h3 {
+  font-size: clamp(1.35rem, 2vw + 0.5rem, 2rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+
+h4, .text-h4 {
+  font-size: clamp(1.15rem, 1.2vw + 0.4rem, 1.5rem);
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+h5, .text-h5 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+h6, .text-h6 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* Body & Lead Text */
+p {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.text-lead {
+  font-size: clamp(1.05rem, 1.2vw + 0.5rem, 1.25rem);
+  line-height: 1.65;
+  color: var(--text-secondary);
+  max-width: 65ch;
+}
+
+.text-sm {
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.text-xs {
+  font-size: 0.75rem;
+  line-height: 1.4;
+  letter-spacing: 0.03em;
+}
+
+/* Monospace / Code */
+code, pre, .font-mono {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+}
+
+/* Futuristic Text Gradients */
+.text-gradient {
+  background: var(--grad-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
+}
+
+.text-gradient-cyan {
+  background: var(--grad-cyan-glow);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
+}
+
+/* Text Colors */
+.text-cyan { color: var(--color-cyan); }
+.text-violet { color: var(--color-violet); }
+.text-emerald { color: var(--color-emerald); }
+.text-muted { color: var(--text-muted); }

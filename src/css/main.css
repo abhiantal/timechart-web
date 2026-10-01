@@ -1,0 +1,48 @@
+/**
+ * NextGen Master Stylesheet
+ * Orchestrating modular 7-1 inspired CSS architecture.
+ */
+
+/* ==========================================================================
+   1. Base & Tokens
+   ========================================================================== */
+@import url('./base/variables.css');
+@import url('./base/reset.css');
+@import url('./base/typography.css');
+
+/* ==========================================================================
+   2. Layout Systems
+   ========================================================================== */
+@import url('./layout/container.css');
+@import url('./layout/grid.css');
+@import url('./layout/section.css');
+
+/* ==========================================================================
+   3. Components
+   ========================================================================== */
+@import url('./components/navbar.css');
+@import url('./components/button.css');
+@import url('./components/card.css');
+@import url('./components/badge.css');
+@import url('./components/theme-toggle.css');
+@import url('./components/tabs.css');
+@import url('./components/pricing-table.css');
+@import url('./components/checkout-modal.css');
+@import url('./components/toast.css');
+@import url('./components/footer.css');
+
+/* ==========================================================================
+   4. Page-Specific Styles
+   ========================================================================== */
+@import url('./pages/home.css');
+@import url('./pages/features.css');
+@import url('./pages/billing.css');
+@import url('./pages/study.css');
+@import url('./pages/terms.css');
+@import url('./pages/module-detail.css');
+
+/* ==========================================================================
+   5. Utilities & Animations
+   ========================================================================== */
+@import url('./utilities/animations.css');
+@import url('./utilities/helpers.css');

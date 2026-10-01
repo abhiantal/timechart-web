@@ -1,0 +1,277 @@
+/**
+ * NextGen Component - Video Theater Lightbox Modal
+ * Luxury OLED Cinema Aesthetic (Permanent Dark Mode, Neon Cyan Accents)
+ */
+
+.video-theater-backdrop {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  background: rgba(3, 7, 18, 0.94) !important;
+  backdrop-filter: blur(24px) !important;
+  -webkit-backdrop-filter: blur(24px) !important;
+  z-index: 999999 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 1.25rem !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.video-theater-backdrop.open {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+.video-theater-container {
+  width: 100% !important;
+  max-width: 920px !important;
+  max-height: calc(100vh - 32px) !important;
+  background: #080C14 !important;
+  border: 1px solid rgba(0, 242, 254, 0.35) !important;
+  border-radius: 18px !important;
+  overflow: hidden !important;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.95), 0 0 60px rgba(0, 242, 254, 0.25) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  transform: scale(0.95) translateY(12px) !important;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  z-index: 1000000 !important;
+}
+
+.video-theater-backdrop.open .video-theater-container {
+  transform: scale(1) translateY(0) !important;
+}
+
+.video-theater-header {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 0.85rem 1.4rem !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  background: #0B1120 !important;
+  flex-shrink: 0 !important;
+}
+
+.video-theater-header .badge {
+  background: rgba(0, 242, 254, 0.15) !important;
+  color: #00F2FE !important;
+  border: 1px solid rgba(0, 242, 254, 0.35) !important;
+  font-weight: 700 !important;
+  font-size: 0.72rem !important;
+  letter-spacing: 0.05em !important;
+  padding: 0.25rem 0.65rem !important;
+  border-radius: 9999px !important;
+  text-transform: uppercase !important;
+}
+
+.video-theater-title {
+  font-family: 'Outfit', sans-serif !important;
+  font-size: 1.05rem !important;
+  font-weight: 700 !important;
+  color: #F8FAFC !important;
+  margin: 0 !important;
+}
+
+.theater-close-btn {
+  width: 34px !important;
+  height: 34px !important;
+  border-radius: 50% !important;
+  background: rgba(255, 255, 255, 0.07) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  color: #94A3B8 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+}
+
+.theater-close-btn:hover {
+  color: #FFFFFF !important;
+  border-color: rgba(244, 63, 94, 0.6) !important;
+  background: rgba(244, 63, 94, 0.25) !important;
+  transform: rotate(90deg) !important;
+}
+
+.video-theater-viewport {
+  position: relative !important;
+  width: 100% !important;
+  max-height: calc(100vh - 165px) !important;
+  background: #000000 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  aspect-ratio: 16 / 9 !important;
+  flex-shrink: 1 !important;
+  overflow: hidden !important;
+}
+
+.video-theater-viewport video,
+.video-theater-viewport img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  outline: none !important;
+}
+
+.video-theater-viewport .theater-media-hidden {
+  display: none !important;
+}
+
+.video-theater-footer {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 0.85rem 1.4rem !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+  background: #0B1120 !important;
+  flex-wrap: wrap !important;
+  gap: 0.75rem !important;
+  flex-shrink: 0 !important;
+}
+
+.video-theater-footer p {
+  color: #94A3B8 !important;
+  font-size: 0.85rem !important;
+  margin: 0 !important;
+  max-width: 620px !important;
+}
+
+.video-theater-footer .btn {
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%) !important;
+  color: #FFFFFF !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  box-shadow: 0 4px 14px rgba(79, 70, 229, 0.4) !important;
+  font-weight: 600 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  padding: 0.45rem 1rem !important;
+  border-radius: 8px !important;
+  text-decoration: none !important;
+  font-size: 0.85rem !important;
+  transition: all 0.2s ease !important;
+}
+
+.video-theater-footer .btn:hover {
+  transform: translateY(-1px) !important;
+  box-shadow: 0 6px 20px rgba(79, 70, 229, 0.6) !important;
+}
+
+/* ====================================================================
+   Theater Modal Image Gallery Navigation & Thumbnail Strip
+   ==================================================================== */
+.theater-gallery-nav-btn {
+  display: none !important;
+  position: absolute !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  width: 46px !important;
+  height: 46px !important;
+  border-radius: 50% !important;
+  background: rgba(8, 14, 26, 0.88) !important;
+  border: 1px solid rgba(0, 242, 254, 0.5) !important;
+  color: #FFFFFF !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  z-index: 100 !important;
+  transition: all 0.2s ease !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7), 0 0 15px rgba(0, 242, 254, 0.25) !important;
+}
+
+.theater-gallery-nav-btn:hover {
+  background: linear-gradient(135deg, #00F2FE 0%, #4FACFE 100%) !important;
+  border-color: transparent !important;
+  color: #040711 !important;
+  transform: translateY(-50%) scale(1.1) !important;
+  box-shadow: 0 0 25px rgba(0, 242, 254, 0.6) !important;
+}
+
+.theater-gallery-nav-btn.prev {
+  left: 16px !important;
+}
+
+.theater-gallery-nav-btn.next {
+  right: 16px !important;
+}
+
+.theater-gallery-strip {
+  display: none !important;
+  position: absolute !important;
+  bottom: 14px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  flex-wrap: nowrap !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 6px 12px !important;
+  background: rgba(4, 7, 15, 0.92) !important;
+  border: 1px solid rgba(0, 242, 254, 0.35) !important;
+  border-radius: 12px !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  z-index: 100 !important;
+  max-width: 90% !important;
+  overflow-x: auto !important;
+  scrollbar-width: none !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.8) !important;
+}
+
+.theater-gallery-strip::-webkit-scrollbar {
+  display: none !important;
+}
+
+/* Active gallery mode shows the buttons and thumbnail strip */
+.video-theater-backdrop.theater-gallery-mode .theater-gallery-nav-btn {
+  display: flex !important;
+}
+
+.video-theater-backdrop.theater-gallery-mode .theater-gallery-strip {
+  display: flex !important;
+}
+
+.theater-thumb-item {
+  width: 54px !important;
+  height: 36px !important;
+  border-radius: 6px !important;
+  overflow: hidden !important;
+  border: 2px solid rgba(255, 255, 255, 0.2) !important;
+  cursor: pointer !important;
+  opacity: 0.55 !important;
+  transition: all 0.2s ease !important;
+  flex-shrink: 0 !important;
+  background: #000000 !important;
+  padding: 0 !important;
+}
+
+.theater-thumb-item img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  display: block !important;
+  pointer-events: none !important;
+}
+
+.theater-thumb-item:hover {
+  opacity: 0.9 !important;
+  border-color: rgba(0, 242, 254, 0.7) !important;
+  transform: scale(1.05) !important;
+}
+
+.theater-thumb-item.active {
+  opacity: 1 !important;
+  border-color: #00F2FE !important;
+  box-shadow: 0 0 12px rgba(0, 242, 254, 0.7) !important;
+  transform: scale(1.08) !important;
+}
+

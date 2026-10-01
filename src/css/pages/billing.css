@@ -1,0 +1,146 @@
+/**
+ * NextGen Page Styles - Billing Page
+ */
+
+.billing-hero {
+  text-align: center;
+  margin-bottom: var(--space-2xl);
+}
+
+.billing-section-title {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--space-md);
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.billing-creator-banner {
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.12) 0%, rgba(0, 242, 254, 0.08) 100%);
+  border: 1px solid rgba(168, 85, 247, 0.3);
+  border-radius: var(--radius-xl);
+  padding: clamp(1.75rem, 4vw, 2.5rem);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  margin-bottom: var(--space-3xl);
+}
+
+.boost-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-lg);
+  margin-bottom: var(--space-3xl);
+}
+
+@media (max-width: 860px) {
+  .boost-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Anti-Cheat & Gamified Unlocks Rule Container */
+.billing-rules-card {
+  background: var(--bg-surface);
+  border: 1px solid rgba(0, 245, 160, 0.25);
+  border-radius: var(--radius-xl);
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  margin-bottom: var(--space-3xl);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.billing-rules-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-lg);
+  padding-bottom: var(--space-md);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.billing-rules-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-xl);
+}
+
+@media (max-width: 860px) {
+  .billing-rules-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.billing-rule-col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.billing-rule-title {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.billing-rule-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.billing-rule-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  line-height: 1.45;
+}
+
+.billing-rule-item svg {
+  width: 16px;
+  height: 16px;
+  color: var(--color-emerald);
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+.billing-anti-cheat-alert {
+  margin-top: var(--space-sm);
+  padding: 0.75rem 1rem;
+  background: rgba(245, 158, 11, 0.08);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  border-radius: var(--radius-md);
+  font-size: 0.8rem;
+  color: #FBBF24;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  line-height: 1.45;
+}
+
+.billing-perks-unlocked-tag {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: var(--space-xs);
+}
+
+.billing-perk-pill {
+  font-size: 0.75rem;
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-medium);
+  color: var(--text-primary);
+}

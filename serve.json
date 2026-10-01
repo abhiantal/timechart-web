@@ -1,0 +1,24 @@
+{
+  "cleanUrls": false,
+  "cors": true,
+  "headers": [
+    {
+      "source": "**/*.@(mp4|webm)",
+      "headers": [
+        {
+          "key": "Accept-Ranges",
+          "value": "bytes"
+        }
+      ]
+    },
+    {
+      "source": ".env*",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-store, no-cache, must-revalidate"
+        }
+      ]
+    }
+  ]
+}

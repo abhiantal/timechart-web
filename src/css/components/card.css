@@ -1,0 +1,125 @@
+/**
+ * NextGen Component - Futuristic Glass Cards
+ * Glassmorphic surfaces with neon gradient borders & interactive lift effects.
+ */
+
+.card {
+  position: relative;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-base);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Card Hover Lift & Border Illumination */
+.card-hover:hover {
+  transform: translateY(-6px);
+  border-color: var(--border-glow);
+  box-shadow: var(--shadow-lg), var(--shadow-glow);
+}
+
+[data-theme="dark"] .card-hover:hover {
+  border-color: rgba(0, 242, 254, 0.4);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6), 0 0 30px var(--color-cyan-glow);
+}
+
+/* Futuristic Top Gradient Accent Line */
+.card-accent-top::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--grad-primary);
+  opacity: 0.8;
+}
+
+/* Cyber Corner Accents */
+.card-cyber {
+  position: relative;
+}
+
+.card-cyber::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 24px;
+  height: 24px;
+  background: linear-gradient(135deg, transparent 50%, var(--border-glow) 50%);
+  opacity: 0.6;
+}
+
+/* Card Inner Sections */
+.card-header {
+  margin-bottom: var(--space-md);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  background: var(--bg-surface-subtle);
+  border: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-cyan);
+  margin-bottom: var(--space-md);
+  transition: all var(--transition-fast);
+}
+
+.card:hover .card-icon {
+  background: var(--grad-primary);
+  color: #FFFFFF;
+  box-shadow: 0 0 18px var(--color-cyan-glow);
+  border-color: transparent;
+  transform: scale(1.05);
+}
+
+.card-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.card-title {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--space-xs);
+}
+
+.card-desc {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  flex-grow: 1;
+}
+
+.card-footer {
+  margin-top: var(--space-lg);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Card elevated / high-emphasis */
+.card-elevated {
+  background: var(--bg-surface-elevated);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border-medium);
+}

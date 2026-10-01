@@ -1,0 +1,957 @@
+/**
+ * NextGen Component - Billing & Pricing Cards (Enhanced)
+ * Comprehensive monetization presentation matching Time Chart documentation.
+ */
+
+/* Billing Cycle Toggle */
+.billing-toggle-wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+  margin-top: var(--space-md);
+  padding: 6px 18px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-pill);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+}
+
+.billing-toggle-label {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: color var(--transition-fast);
+  user-select: none;
+}
+
+.billing-toggle-label.active {
+  color: var(--text-primary);
+}
+
+.billing-switch {
+  width: 52px;
+  height: 28px;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-pill);
+  padding: 2px;
+  position: relative;
+  cursor: pointer;
+  transition: background-color var(--transition-base);
+}
+
+.billing-switch-thumb {
+  width: 22px;
+  height: 22px;
+  background: var(--grad-primary);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--color-cyan-glow);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.billing-switch.annual .billing-switch-thumb {
+  transform: translateX(24px);
+}
+
+.billing-discount-badge {
+  background: rgba(0, 245, 160, 0.15);
+  color: var(--color-emerald);
+  border: 1px solid var(--color-emerald-glow);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.2rem 0.65rem;
+  border-radius: var(--radius-pill);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  user-select: none;
+}
+
+.billing-discount-badge:hover {
+  background: rgba(0, 245, 160, 0.25);
+  transform: translateY(-1px);
+}
+
+/* Section Sub-Headers */
+.billing-sub-header {
+  margin-bottom: var(--space-xl);
+  margin-top: var(--space-3xl);
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: var(--space-md);
+}
+
+.billing-sub-header-title {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.billing-sub-header-desc {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+/* Pricing Grid */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-lg);
+  align-items: stretch;
+  margin-bottom: var(--space-3xl);
+}
+
+/* Pricing Card */
+.pricing-card {
+  position: relative;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: 2.25rem 1.75rem;
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base);
+}
+
+.pricing-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--border-glow);
+  box-shadow: var(--shadow-lg), 0 0 25px var(--color-cyan-glow);
+}
+
+/* Featured / Popular Tier */
+.pricing-card.featured {
+  background: var(--bg-surface-elevated);
+  border: 2px solid var(--color-cyan);
+  box-shadow: var(--shadow-lg), 0 0 35px var(--color-cyan-glow);
+  transform: scale(1.03);
+  z-index: 2;
+}
+
+.pricing-card.featured:hover {
+  transform: scale(1.03) translateY(-6px);
+}
+
+.pricing-popular-tag {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--grad-primary);
+  color: #FFFFFF;
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.35rem 1.1rem;
+  border-radius: var(--radius-pill);
+  box-shadow: 0 4px 14px var(--color-cyan-glow);
+  white-space: nowrap;
+}
+
+/* Card Header & Price */
+.pricing-tier-name {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--space-2xs);
+}
+
+.pricing-tier-desc {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  min-height: 42px;
+  margin-bottom: var(--space-md);
+  line-height: 1.5;
+}
+
+.pricing-price-box {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  margin-bottom: var(--space-xs);
+}
+
+.pricing-currency {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.pricing-amount {
+  font-family: var(--font-heading);
+  font-size: 2.75rem;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--text-primary);
+}
+
+.pricing-period {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.pricing-billed-annually {
+  font-size: 0.8rem;
+  color: var(--color-emerald);
+  min-height: 20px;
+  margin-bottom: var(--space-lg);
+}
+
+/* Feature Checklist */
+.pricing-features-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: var(--space-xl);
+  flex-grow: 1;
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--border-subtle);
+}
+
+.pricing-feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.45;
+}
+
+.pricing-check-icon {
+  width: 18px;
+  height: 18px;
+  color: var(--color-cyan);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.pricing-check-icon.disabled {
+  color: var(--text-muted);
+  opacity: 0.35;
+}
+
+/* ==========================================================================
+   Sachet Passes & Gamified Rewards Cards (Theme-Adaptive Cyber-Holo Grid)
+   ========================================================================== */
+.passes-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+  margin-bottom: var(--space-3xl);
+  align-items: stretch;
+}
+
+/* Base Holo-Pass Card - Full Light & Dark Theme Support */
+.pass-card {
+  --pass-accent: var(--color-cyan, #0284C7);
+  --pass-accent-glow: rgba(2, 132, 199, 0.2);
+  --pass-card-bg: linear-gradient(165deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 250, 252, 0.92) 100%);
+  --pass-card-border: var(--border-medium, rgba(0, 0, 0, 0.1));
+  --pass-card-shadow: 0 10px 28px rgba(15, 23, 42, 0.08), 0 1px 3px rgba(15, 23, 42, 0.04);
+  --pass-text-primary: var(--text-primary, #0F172A);
+  --pass-text-secondary: var(--text-secondary, #475569);
+  --pass-badge-bg: var(--bg-surface-subtle, rgba(241, 245, 249, 0.9));
+  --pass-badge-border: var(--border-subtle, rgba(0, 0, 0, 0.08));
+
+  position: relative;
+  background: var(--pass-card-bg);
+  border: 1px solid var(--pass-card-border);
+  border-radius: 20px;
+  padding: 1.85rem 1.45rem 1.65rem 1.45rem;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  display: flex;
+  flex-direction: column;
+  overflow: visible; /* Never clip floating badges */
+  box-shadow: var(--pass-card-shadow);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.3s ease;
+  z-index: 1;
+}
+
+[data-theme="dark"] .pass-card {
+  --pass-accent: var(--color-cyan, #00F2FE);
+  --pass-accent-glow: rgba(0, 242, 254, 0.35);
+  --pass-card-bg: linear-gradient(165deg, rgba(13, 20, 36, 0.88) 0%, rgba(6, 11, 23, 0.96) 100%);
+  --pass-card-border: rgba(255, 255, 255, 0.08);
+  --pass-card-shadow: 0 14px 35px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  --pass-text-primary: #FFFFFF;
+  --pass-text-secondary: #94A3B8;
+  --pass-badge-bg: rgba(255, 255, 255, 0.05);
+  --pass-badge-border: rgba(255, 255, 255, 0.1);
+}
+
+/* Top Laser Accent */
+.pass-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  background: linear-gradient(90deg, transparent 0%, var(--pass-accent) 50%, transparent 100%);
+  opacity: 0.85;
+  transition: opacity 0.3s ease, height 0.3s ease;
+}
+
+/* Ambient Radial Glow on Hover */
+.pass-card::after {
+  content: '';
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--pass-accent-glow) 0%, transparent 70%);
+  pointer-events: none;
+  opacity: 0.25;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.pass-card:hover {
+  transform: translateY(-8px) scale(1.015);
+  border-color: var(--pass-accent);
+  box-shadow: 0 22px 50px rgba(15, 23, 42, 0.15),
+              0 0 30px var(--pass-accent-glow);
+}
+
+[data-theme="dark"] .pass-card:hover {
+  box-shadow: 0 22px 50px rgba(0, 0, 0, 0.85),
+              0 0 35px var(--pass-accent-glow),
+              inset 0 0 20px rgba(0, 242, 254, 0.06);
+}
+
+.pass-card:hover::before {
+  opacity: 1;
+  height: 4px;
+}
+
+.pass-card:hover::after {
+  opacity: 0.75;
+  transform: scale(1.2);
+}
+
+/* Theme Variations */
+.pass-card.theme-cyan {
+  --pass-accent: var(--color-cyan, #0284C7);
+  --pass-accent-glow: rgba(2, 132, 199, 0.22);
+}
+[data-theme="dark"] .pass-card.theme-cyan {
+  --pass-accent: #00F2FE;
+  --pass-accent-glow: rgba(0, 242, 254, 0.35);
+  border-color: rgba(0, 242, 254, 0.22);
+}
+
+.pass-card.theme-sprint {
+  --pass-accent: #0284C7;
+  --pass-accent-glow: rgba(2, 132, 199, 0.35);
+  --pass-card-bg: linear-gradient(165deg, rgba(240, 249, 255, 0.98) 0%, rgba(224, 242, 254, 0.65) 100%);
+  --pass-card-border: rgba(2, 132, 199, 0.45);
+  --pass-card-shadow: 0 14px 35px rgba(2, 132, 199, 0.15), 0 2px 6px rgba(15, 23, 42, 0.05);
+}
+[data-theme="dark"] .pass-card.theme-sprint {
+  --pass-accent: #38BDF8;
+  --pass-accent-glow: rgba(56, 189, 248, 0.45);
+  --pass-card-bg: linear-gradient(165deg, rgba(14, 28, 54, 0.92) 0%, rgba(6, 12, 26, 0.98) 100%);
+  --pass-card-border: rgba(56, 189, 248, 0.45);
+  --pass-card-shadow: 0 16px 40px rgba(0, 0, 0, 0.7),
+              0 0 25px rgba(0, 242, 254, 0.18),
+              inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.pass-card.theme-emerald {
+  --pass-accent: var(--color-emerald, #059669);
+  --pass-accent-glow: rgba(5, 150, 105, 0.22);
+}
+[data-theme="dark"] .pass-card.theme-emerald {
+  --pass-accent: #10B981;
+  --pass-accent-glow: rgba(16, 185, 129, 0.4);
+  border-color: rgba(16, 185, 129, 0.28);
+}
+
+.pass-card.theme-purple {
+  --pass-accent: var(--color-violet, #6366F1);
+  --pass-accent-glow: rgba(99, 102, 241, 0.22);
+}
+[data-theme="dark"] .pass-card.theme-purple {
+  --pass-accent: #A855F7;
+  --pass-accent-glow: rgba(168, 85, 247, 0.4);
+  border-color: rgba(168, 85, 247, 0.28);
+}
+
+/* Floating Popular Badge - Never Clipped */
+.pass-hot-badge {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--grad-primary, linear-gradient(135deg, #0284C7 0%, #2563EB 50%, #7C3AED 100%));
+  color: #FFFFFF;
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.32rem 1.05rem;
+  border-radius: 999px;
+  box-shadow: 0 4px 14px var(--color-cyan-glow, rgba(2, 132, 199, 0.35));
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  z-index: 10;
+  pointer-events: none;
+}
+[data-theme="dark"] .pass-hot-badge {
+  background: linear-gradient(135deg, #00F2FE 0%, #3B82F6 100%);
+  color: #020617;
+  box-shadow: 0 4px 18px rgba(0, 242, 254, 0.5);
+}
+
+/* Card Top Metadata & Telemetry */
+.pass-meta-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.85rem;
+}
+
+.pass-telemetry-code {
+  font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--pass-accent);
+  opacity: 0.9;
+  text-transform: uppercase;
+}
+
+.pass-pill-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  text-transform: uppercase;
+  background: var(--pass-badge-bg);
+  border: 1px solid var(--pass-badge-border);
+  color: var(--pass-text-secondary);
+}
+
+.pass-pill-badge.cyan {
+  background: rgba(2, 132, 199, 0.1);
+  border-color: rgba(2, 132, 199, 0.3);
+  color: var(--color-cyan);
+}
+[data-theme="dark"] .pass-pill-badge.cyan {
+  background: rgba(0, 242, 254, 0.12);
+  border-color: rgba(0, 242, 254, 0.35);
+  color: #00F2FE;
+}
+
+.pass-pill-badge.emerald {
+  background: rgba(5, 150, 105, 0.1);
+  border-color: rgba(5, 150, 105, 0.3);
+  color: var(--color-emerald);
+}
+[data-theme="dark"] .pass-pill-badge.emerald {
+  background: rgba(16, 185, 129, 0.12);
+  border-color: rgba(16, 185, 129, 0.35);
+  color: #10B981;
+}
+
+.pass-pill-badge.purple {
+  background: rgba(99, 102, 241, 0.1);
+  border-color: rgba(99, 102, 241, 0.3);
+  color: var(--color-violet);
+}
+[data-theme="dark"] .pass-pill-badge.purple {
+  background: rgba(168, 85, 247, 0.12);
+  border-color: rgba(168, 85, 247, 0.35);
+  color: #C084FC;
+}
+
+.pass-pulse-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  box-shadow: 0 0 8px currentColor;
+  animation: passPulseAnim 2s infinite ease-in-out;
+}
+
+@keyframes passPulseAnim {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.35; transform: scale(0.75); }
+}
+
+/* Giant Futuristic Price Display */
+.pass-price-hero {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin-bottom: 0.4rem;
+}
+
+.pass-price-currency {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--pass-accent);
+  text-shadow: 0 0 15px var(--pass-accent-glow);
+}
+
+.pass-price-num {
+  font-family: var(--font-heading);
+  font-size: 2.85rem;
+  font-weight: 900;
+  line-height: 1;
+  color: var(--pass-text-primary);
+  letter-spacing: -0.04em;
+  text-shadow: 0 0 20px var(--pass-accent-glow);
+}
+
+.pass-price-badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.2rem 0.6rem;
+  border-radius: 6px;
+  background: var(--pass-badge-bg);
+  color: var(--pass-text-secondary);
+  margin-left: auto;
+  align-self: center;
+  border: 1px solid var(--pass-badge-border);
+}
+
+.pass-price-badge.highlight {
+  background: rgba(2, 132, 199, 0.12);
+  color: var(--color-cyan);
+  border-color: rgba(2, 132, 199, 0.3);
+}
+[data-theme="dark"] .pass-price-badge.highlight {
+  background: rgba(0, 242, 254, 0.15);
+  color: #00F2FE;
+  border-color: rgba(0, 242, 254, 0.3);
+}
+
+.pass-price-badge.free {
+  background: rgba(5, 150, 105, 0.12);
+  color: var(--color-emerald);
+  border-color: rgba(5, 150, 105, 0.3);
+}
+[data-theme="dark"] .pass-price-badge.free {
+  background: rgba(16, 185, 129, 0.15);
+  color: #10B981;
+  border-color: rgba(16, 185, 129, 0.3);
+}
+
+/* Pass Title & Subtitle */
+.pass-name {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--pass-text-primary);
+  margin-bottom: 0.45rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pass-desc {
+  font-size: 0.85rem;
+  color: var(--pass-text-secondary);
+  line-height: 1.5;
+  margin-bottom: 1.15rem;
+  min-height: 48px;
+}
+
+/* Micro Feature Badges Checklist */
+.pass-perks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  margin-bottom: 1.4rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--pass-badge-border);
+  flex-grow: 1;
+}
+
+.pass-perk-item {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.825rem;
+  color: var(--pass-text-secondary);
+  line-height: 1.4;
+}
+
+.pass-perk-icon {
+  width: 15px;
+  height: 15px;
+  color: var(--pass-accent);
+  flex-shrink: 0;
+}
+
+/* Action Buttons (Adaptive Theme) */
+.btn-pass-cyber {
+  width: 100%;
+  padding: 0.8rem 1.15rem;
+  border-radius: 12px;
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  margin-top: auto;
+  border: 1px solid var(--pass-accent);
+  background: var(--bg-surface-elevated, #FFFFFF);
+  color: var(--pass-text-primary, #0F172A);
+  text-decoration: none;
+}
+
+[data-theme="dark"] .btn-pass-cyber {
+  background: rgba(255, 255, 255, 0.04);
+  color: #FFFFFF;
+}
+
+.btn-pass-cyber::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+  transition: left 0.5s ease;
+}
+
+.btn-pass-cyber:hover {
+  transform: translateY(-2px);
+  background: var(--pass-accent);
+  color: #FFFFFF;
+  box-shadow: 0 8px 24px var(--pass-accent-glow);
+}
+[data-theme="dark"] .btn-pass-cyber:hover {
+  color: #020617;
+}
+
+.btn-pass-cyber:hover::before {
+  left: 100%;
+}
+
+.btn-pass-cyber.primary {
+  background: var(--grad-primary, linear-gradient(135deg, #0284C7 0%, #2563EB 100%));
+  color: #FFFFFF;
+  border: none;
+  box-shadow: 0 6px 20px var(--color-cyan-glow, rgba(2, 132, 199, 0.35));
+}
+[data-theme="dark"] .btn-pass-cyber.primary {
+  background: linear-gradient(135deg, #00F2FE 0%, #0284C7 100%);
+  color: #020617;
+  box-shadow: 0 6px 20px rgba(0, 242, 254, 0.4);
+}
+
+.btn-pass-cyber.primary:hover {
+  background: linear-gradient(135deg, #38BDF8 0%, #0284C7 100%);
+  box-shadow: 0 10px 30px var(--pass-accent-glow);
+  transform: translateY(-3px);
+}
+[data-theme="dark"] .btn-pass-cyber.primary:hover {
+  background: linear-gradient(135deg, #38BDF8 0%, #00F2FE 100%);
+}
+
+.btn-pass-cyber.emerald-glow {
+  border-color: var(--color-emerald, #059669);
+  color: var(--color-emerald, #059669);
+}
+[data-theme="dark"] .btn-pass-cyber.emerald-glow {
+  border-color: #10B981;
+  color: #10B981;
+}
+
+.btn-pass-cyber.emerald-glow:hover {
+  background: var(--color-emerald, #059669);
+  color: #FFFFFF;
+  box-shadow: 0 8px 24px var(--color-emerald-glow);
+}
+[data-theme="dark"] .btn-pass-cyber.emerald-glow:hover {
+  background: #10B981;
+  color: #020617;
+}
+
+.btn-pass-cyber.purple-glow {
+  border-color: var(--color-violet, #6366F1);
+  color: var(--color-violet, #6366F1);
+}
+[data-theme="dark"] .btn-pass-cyber.purple-glow {
+  border-color: #A855F7;
+  color: #C084FC;
+}
+
+.btn-pass-cyber.purple-glow:hover {
+  background: var(--color-violet, #6366F1);
+  color: #FFFFFF;
+  box-shadow: 0 8px 24px var(--color-violet-glow);
+}
+[data-theme="dark"] .btn-pass-cyber.purple-glow:hover {
+  background: #A855F7;
+  color: #020617;
+}
+
+/* Squad Hero Card */
+.squad-hero-card {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.08) 0%, rgba(2, 132, 199, 0.05) 100%);
+  border: 1px solid rgba(99, 102, 241, 0.25);
+  border-radius: var(--radius-xl);
+  padding: 2rem;
+  backdrop-filter: var(--glass-blur-lg);
+  -webkit-backdrop-filter: var(--glass-blur-lg);
+  display: flex;
+  flex-direction: column;
+}
+
+.squad-members-avatars {
+  display: flex;
+  align-items: center;
+  gap: -8px;
+  margin-bottom: var(--space-md);
+}
+
+.squad-avatar-bubble {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--bg-surface-elevated);
+  border: 2px solid var(--color-violet);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--color-violet);
+  margin-left: -8px;
+  box-shadow: var(--shadow-xs);
+}
+
+.squad-avatar-bubble:first-child {
+  margin-left: 0;
+}
+
+/* Post Boost Mini Cards Grid */
+.boost-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+  margin-top: var(--space-md);
+}
+
+.boost-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.25rem 1rem;
+  display: flex;
+  flex-direction: column;
+  transition: all var(--transition-fast);
+}
+
+.boost-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--color-cyan);
+  background: var(--bg-surface-elevated);
+  box-shadow: 0 0 18px var(--color-cyan-glow);
+}
+
+.boost-card.popular {
+  border-color: rgba(0, 242, 254, 0.4);
+  background: rgba(0, 242, 254, 0.04);
+}
+
+.boost-card-price {
+  font-family: var(--font-heading);
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.boost-card-days {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-cyan);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.5rem;
+}
+
+.boost-card-perks {
+  font-size: 0.825rem;
+  color: var(--text-secondary);
+  line-height: 1.45;
+}
+
+/* Modern Comparison Matrix Table */
+.comparison-table-wrapper {
+  overflow-x: auto;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-surface);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  box-shadow: var(--shadow-md);
+  margin-bottom: var(--space-3xl);
+}
+
+.comparison-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  text-align: left;
+  font-size: 0.9rem;
+}
+
+.comparison-table th {
+  padding: 1.25rem 1.25rem;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  background: var(--bg-surface-elevated);
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--border-medium);
+  white-space: nowrap;
+}
+
+.comparison-table th.col-pro {
+  background: rgba(2, 132, 199, 0.12);
+  color: var(--color-cyan);
+  border-top: 2px solid var(--color-cyan);
+}
+
+.comparison-table td {
+  padding: 1.1rem 1.25rem;
+  border-bottom: 1px solid var(--border-subtle);
+  vertical-align: middle;
+}
+
+.comparison-table td.col-pro {
+  background: rgba(2, 132, 199, 0.03);
+}
+
+.comparison-table tr:hover td {
+  background: var(--bg-surface-subtle);
+}
+
+.comparison-table td:first-child {
+  font-weight: 600;
+  color: var(--text-primary);
+  position: sticky;
+  left: 0;
+  background: var(--bg-surface);
+  z-index: 1;
+}
+
+.comparison-table tr:hover td:first-child {
+  background: var(--bg-surface-elevated);
+}
+
+/* Modern Status Badges in Table (Replacing raw emojis) */
+.table-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.table-pill.check {
+  color: var(--text-primary);
+}
+
+.table-pill.check svg {
+  color: var(--color-emerald);
+  flex-shrink: 0;
+}
+
+.table-pill.lock {
+  color: var(--text-muted);
+}
+
+.table-pill.lock svg {
+  color: var(--color-rose);
+  opacity: 0.7;
+  flex-shrink: 0;
+}
+
+.table-pill.unlimited {
+  color: var(--color-cyan);
+  font-weight: 700;
+}
+
+.table-pill.unlimited svg {
+  color: var(--color-cyan);
+  flex-shrink: 0;
+}
+
+/* Responsive Pricing */
+@media (max-width: 1100px) {
+  .pricing-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .pricing-card.featured {
+    transform: none;
+  }
+  .pricing-card.featured:hover {
+    transform: translateY(-6px);
+  }
+  .passes-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .boost-cards-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 680px) {
+  .pricing-grid {
+    grid-template-columns: 1fr;
+  }
+  .passes-grid {
+    grid-template-columns: 1fr;
+  }
+}

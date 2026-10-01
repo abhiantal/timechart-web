@@ -1,0 +1,17 @@
+{
+  "liveServer.settings.ignoreFiles": [
+    "**/.git/**",
+    "**/*.log",
+    "**/*.tmp",
+    "assets/**",
+    "**/*.mp4",
+    "**/*.webm",
+    "**/*.jpeg",
+    "**/*.jpg",
+    "**/*.png",
+    "**/*.webp",
+    "**/*.pdf"
+  ],
+  "liveServer.settings.wait": 1500,
+  "liveServer.settings.donotShowInfoMsg": true
+}
