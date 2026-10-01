@@ -122,6 +122,165 @@
 }
 
 /* ==========================================================================
+   1c. APP DEMO VIDEO SECTION
+   ========================================================================== */
+
+.section-video-demo {
+  padding: var(--space-2xl) 0;
+}
+
+.home-video-card {
+  position: relative;
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+  background: var(--surface-glass);
+  border: 1px solid var(--border-medium);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.home-video-card:hover .home-video-play-toggle {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.home-video-glow {
+  position: absolute;
+  inset: -60px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(139, 92, 246, 0.25) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(40px);
+}
+
+.home-demo-video {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 620px;
+  object-fit: cover;
+  position: relative;
+  z-index: 1;
+  border-radius: var(--radius-2xl);
+}
+
+/* Top & Bottom gradient overlays */
+.home-video-overlay-top,
+.home-video-overlay-bottom {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 80px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.home-video-overlay-top {
+  top: 0;
+  background: linear-gradient(to bottom, var(--bg-primary) 0%, transparent 100%);
+  opacity: 0.5;
+}
+
+.home-video-overlay-bottom {
+  bottom: 0;
+  background: linear-gradient(to top, var(--bg-primary) 0%, transparent 100%);
+  opacity: 0.6;
+}
+
+/* Live caption badge (bottom-left) */
+.home-video-caption {
+  position: absolute;
+  bottom: 1.25rem;
+  left: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  padding: 0.35rem 0.85rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  letter-spacing: 0.02em;
+  z-index: 4;
+}
+
+/* Theater expand button (top-right) */
+.home-video-theater-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.45rem 0.85rem;
+  cursor: pointer;
+  transition: background var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
+  z-index: 4;
+}
+
+.home-video-theater-btn:hover {
+  background: rgba(139, 92, 246, 0.3);
+  color: var(--text-primary);
+  transform: scale(1.05);
+}
+
+/* Center play/pause button (hover reveal) */
+.home-video-play-toggle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.85);
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity var(--transition-base), transform var(--transition-base);
+  z-index: 4;
+}
+
+.home-video-play-toggle:hover {
+  background: rgba(139, 92, 246, 0.5);
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+@media (max-width: 768px) {
+  .home-demo-video {
+    max-height: 340px;
+  }
+  .home-video-caption {
+    font-size: 0.68rem;
+    padding: 0.25rem 0.6rem;
+  }
+  .home-video-theater-btn span {
+    display: none;
+  }
+}
+
+/* ==========================================================================
    2. APP SHOWCASE & INTERACTIVE PHONE MOCKUP
    ========================================================================== */
 

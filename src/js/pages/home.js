@@ -201,6 +201,9 @@ class HomeController {
       this.switchMockupView(targetViewId, tabBtn);
     });
 
+    // 1b. App Demo Video — Play / Pause toggle
+    this.initDemoVideo();
+
     // 2. APK Download Buttons Toast Feedback
     document.addEventListener('click', (e) => {
       const downloadBtn = e.target.closest('#hero-apk-download-btn, #direct-apk-download-btn, .home-download-btn');
@@ -444,6 +447,60 @@ class HomeController {
       if (miniNavTabs[targetIdx]) {
         miniNavTabs[targetIdx].classList.add('active');
       }
+    }
+  }
+
+  initDemoVideo() {
+    const video = document.getElementById('app-demo-video');
+    const playBtn = document.getElementById('app-demo-play-btn');
+    if (!video || !playBtn) return;
+
+    const iconPlay = playBtn.querySelector('.vid-icon-play');
+    const iconPause = playBtn.querySelector('.vid-icon-pause');
+
+    const syncIcons = () => {
+      if (video.paused) {
+        if (iconPlay) iconPlay.style.display = '';
+        if (iconPause) iconPause.style.display = 'none';
+      } else {
+        if (iconPlay) iconPlay.style.display = 'none';
+        if (iconPause) iconPause.style.display = '';
+      }
+    };
+
+    // Toggle on button click
+    playBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      video.paused ? video.play() : video.pause();
+      syncIcons();
+    });
+
+    // Toggle on card click (excluding buttons/links)
+    const card = document.getElementById('app-demo-video-wrap');
+    if (card) {
+      card.addEventListener('click', (e) => {
+        if (e.target.closest('button') || e.target.closest('a')) return;
+        video.paused ? video.play() : video.pause();
+        syncIcons();
+      });
+    }
+
+    video.addEventListener('play', syncIcons);
+    video.addEventListener('pause', syncIcons);
+
+    // Auto-pause when scrolled out of view, resume when back
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) {
+            video.pause();
+          } else if (video.paused) {
+            video.play().catch(() => {});
+          }
+          syncIcons();
+        });
+      }, { threshold: 0.25 });
+      observer.observe(video);
     }
   }
 }
