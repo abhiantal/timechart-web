@@ -125,25 +125,25 @@ export const APP_LINKS = {
     home: '#home',
     features: '#features',
     billing: '#billing',
-    study: '#study',
+    knowledge: '#knowledge',
     terms: '#terms',
   },
 
   // ============================================================================
-  // 6. STUDY & COGNITIVE HABIT RESEARCH HUBS
+  // 6. KNOWLEDGE HUB DEEP-DIVE PAGES
   // ============================================================================
 
   /**
-   * [USED IN]: Study hub cards, feature detail readouts, research bibliography.
+   * [USED IN]: Knowledge Hub cards, feature detail readouts, research bibliography.
    * [WHY]: Direct hash routes to deep-dive research papers on habit architecture.
    */
-  studyPages: {
-    jCurve: '#study/j-curve',
-    atomicHabits: '#study/atomic-habits',
-    research: '#study/research',
-    kaizen: '#study/kaizen',
-    flowState: '#study/flow-state',
-    habitStacking: '#study/habit-stacking',
+  knowledgePages: {
+    jCurve: '#knowledge/j-curve',
+    atomicHabits: '#knowledge/atomic-habits',
+    research: '#knowledge/research',
+    kaizen: '#knowledge/kaizen',
+    flowState: '#knowledge/flow-state',
+    habitStacking: '#knowledge/habit-stacking',
   },
 
   // ============================================================================
