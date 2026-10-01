@@ -204,6 +204,9 @@ class HomeController {
     // 1b. App Demo Video — Play / Pause toggle
     this.initDemoVideo();
 
+    // 1c. Brand & Showcase Videos — Autoplay & Loop
+    this.initShowcaseVideos();
+
     // 2. APK Download Buttons Toast Feedback
     document.addEventListener('click', (e) => {
       const downloadBtn = e.target.closest('#hero-apk-download-btn, #direct-apk-download-btn, .home-download-btn');
@@ -502,6 +505,23 @@ class HomeController {
       }, { threshold: 0.25 });
       observer.observe(video);
     }
+  }
+
+  initShowcaseVideos() {
+    const showcaseVideos = document.querySelectorAll('.home-video-showcase-card video');
+    showcaseVideos.forEach(vid => {
+      vid.muted = true;
+      vid.playsInline = true;
+      vid.loop = true;
+      vid.setAttribute('autoplay', '');
+      vid.setAttribute('muted', '');
+      vid.setAttribute('playsinline', '');
+      vid.setAttribute('loop', '');
+      const playPromise = vid.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {});
+      }
+    });
   }
 }
 

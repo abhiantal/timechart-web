@@ -68,21 +68,19 @@
   animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-/* Scroll Reveal Observer Base State */
+/* Scroll Reveal Observer Base State - Safe progressive enhancement */
 .reveal-on-scroll {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform;
 }
 
-.reveal-on-scroll.is-revealed {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Hero Section: Above the fold elements must be immediately visible without delay */
-.section-hero .reveal-on-scroll {
+.reveal-on-scroll.is-revealed,
+.section-hero .reveal-on-scroll,
+.study-hero.reveal-on-scroll,
+.section-header.reveal-on-scroll,
+.page-viewport .reveal-on-scroll {
   opacity: 1 !important;
   transform: translateY(0) !important;
 }

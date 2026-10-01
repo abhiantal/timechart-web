@@ -112,6 +112,18 @@ class PageLoader {
       document.title = PAGE_TITLES[pageName];
     }
 
+    // Immediately reveal all elements in newly mounted view
+    if (this.mountTarget) {
+      this.mountTarget.querySelectorAll('.reveal-on-scroll').forEach(el => {
+        el.classList.add('is-revealed');
+      });
+      // Start muted autoplay for any videos inside the mounted template
+      this.mountTarget.querySelectorAll('video[autoplay]').forEach(v => {
+        v.muted = true;
+        v.play().catch(() => {});
+      });
+    }
+
     // Refresh scroll reveal animations for newly mounted elements
     scrollReveal.refresh();
 
