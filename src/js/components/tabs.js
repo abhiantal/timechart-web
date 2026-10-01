@@ -48,10 +48,10 @@ export class TabController {
         e.preventDefault();
         const raw = studyTrigger.getAttribute('data-study-target').replace(/^#\/?/, '').trim();
         let route = raw;
-        if (raw === 'study') {
-          route = 'study';
-        } else if (!raw.startsWith('study/')) {
-          route = `study/${raw}`;
+        if (raw === 'study' || raw === 'knowledge') {
+          route = 'knowledge';
+        } else if (!raw.startsWith('study/') && !raw.startsWith('knowledge/')) {
+          route = this.isValidRoute(`knowledge/${raw}`) ? `knowledge/${raw}` : `study/${raw}`;
         }
         if (this.isValidRoute(route)) {
           this.navigate(route, true);
@@ -64,7 +64,7 @@ export class TabController {
       if (studyCard && !e.target.closest('button') && !e.target.closest('a')) {
         e.preventDefault();
         const cardId = studyCard.getAttribute('data-study-card').replace(/^#\/?/, '').trim();
-        const route = cardId.startsWith('study/') ? cardId : `study/${cardId}`;
+        const route = this.isValidRoute(`knowledge/${cardId}`) ? `knowledge/${cardId}` : (cardId.startsWith('study/') ? cardId : `study/${cardId}`);
         if (this.isValidRoute(route)) {
           this.navigate(route, true);
           return;

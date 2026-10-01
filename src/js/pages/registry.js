@@ -7,18 +7,39 @@ export const PAGE_PATHS = {
   home: './pages/main/home.html',
   features: './pages/main/features.html',
   billing: './pages/main/billing.html',
-  study: './pages/main/study.html',
+  knowledge: './pages/main/knowledge.html',
+  study: './pages/main/knowledge.html',
   terms: './pages/main/terms.html',
 
-  // 8 Study Deep-Dive Pages
-  'study/j-curve': './pages/Knowledge/j-curve.html',
-  'study/atomic-habits': './pages/Knowledge/atomic-habits.html',
-  'study/research': './pages/Knowledge/research.html',
-  'study/kaizen': './pages/Knowledge/kaizen.html',
-  'study/flow-state': './pages/Knowledge/flow-state.html',
-  'study/habit-stacking': './pages/Knowledge/habit-stacking.html',
-  'study/the-secret': './pages/Knowledge/the-secret-bucket-list.html',
-  'study/social-accountability': './pages/Knowledge/social-accountability.html',
+  // 8 Knowledge / Study Deep-Dive Pages
+  'knowledge/bucket-list-the-secret': './pages/Knowledge/bucket-list-the-secret.html',
+  'knowledge/day-week-atomic-habits': './pages/Knowledge/day-week-atomic-habits.html',
+  'knowledge/deep-work-flow-state': './pages/Knowledge/deep-work-flow-state.html',
+  'knowledge/social-feed-influence': './pages/Knowledge/social-feed-influence.html',
+  'knowledge/habit-stacking-tiny-habits': './pages/Knowledge/habit-stacking-tiny-habits.html',
+  'knowledge/continuous-improvement-kaizen': './pages/Knowledge/continuous-improvement-kaizen.html',
+  'knowledge/performance-dip-j-curve': './pages/Knowledge/performance-dip-j-curve.html',
+  'knowledge/behavioral-science-research': './pages/Knowledge/behavioral-science-research.html',
+
+  // Backward-compatible short aliases
+  'knowledge/the-secret': './pages/Knowledge/bucket-list-the-secret.html',
+  'knowledge/atomic-habits': './pages/Knowledge/day-week-atomic-habits.html',
+  'knowledge/flow-state': './pages/Knowledge/deep-work-flow-state.html',
+  'knowledge/social-accountability': './pages/Knowledge/social-feed-influence.html',
+  'knowledge/habit-stacking': './pages/Knowledge/habit-stacking-tiny-habits.html',
+  'knowledge/kaizen': './pages/Knowledge/continuous-improvement-kaizen.html',
+  'knowledge/j-curve': './pages/Knowledge/performance-dip-j-curve.html',
+  'knowledge/research': './pages/Knowledge/behavioral-science-research.html',
+
+  // Backward-compatible study/ aliases
+  'study/the-secret': './pages/Knowledge/bucket-list-the-secret.html',
+  'study/atomic-habits': './pages/Knowledge/day-week-atomic-habits.html',
+  'study/flow-state': './pages/Knowledge/deep-work-flow-state.html',
+  'study/social-accountability': './pages/Knowledge/social-feed-influence.html',
+  'study/habit-stacking': './pages/Knowledge/habit-stacking-tiny-habits.html',
+  'study/kaizen': './pages/Knowledge/continuous-improvement-kaizen.html',
+  'study/j-curve': './pages/Knowledge/performance-dip-j-curve.html',
+  'study/research': './pages/Knowledge/behavioral-science-research.html',
 
   // 11 Core Action Modules
   'features/day-task': './pages/modules/day-task.html',
@@ -43,10 +64,20 @@ export const PAGE_TITLES = {
   home: 'NextGen — Intelligent Ecosystem & Time Chart',
   features: 'Modules & Features (11+3) — Time Chart',
   billing: 'Subscriptions & Monetization — Time Chart',
-  study: 'Study & Research Hub — NextGen',
+  knowledge: 'Knowledge & Research Hub — NextGen',
+  study: 'Knowledge & Research Hub — NextGen',
   terms: 'Terms & Conditions — Time Chart',
 
-  // 8 Study Deep-Dive Titles
+  // 8 Knowledge / Study Deep-Dive Titles
+  'knowledge/j-curve': 'The J-Curve Effect — Time Chart Research',
+  'knowledge/atomic-habits': 'Atomic Habits Framework — Time Chart Research',
+  'knowledge/research': 'App Research & Data — Time Chart Research',
+  'knowledge/kaizen': 'Kaizen & The 1% Rule — Time Chart Research',
+  'knowledge/flow-state': 'Flow State Architecture — Time Chart Research',
+  'knowledge/habit-stacking': 'Habit Stacking & Anchoring — Time Chart Research',
+  'knowledge/the-secret': 'The Secret & Visualization — Time Chart Research',
+  'knowledge/social-accountability': 'Social Proof & Public Accountability — Time Chart Research',
+
   'study/j-curve': 'The J-Curve Effect — Time Chart Research',
   'study/atomic-habits': 'Atomic Habits Framework — Time Chart Research',
   'study/research': 'App Research & Data — Time Chart Research',
