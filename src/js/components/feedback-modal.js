@@ -105,12 +105,6 @@ class FeedbackModalController {
      2. Event Bindings
      -------------------------------------------------------------------------- */
   bindTriggers() {
-    // Floating FAB
-    const fab = $('#floating-feedback-fab');
-    if (fab) {
-      fab.addEventListener('click', () => this.open());
-    }
-
     // Navbar Trigger Button
     const navBtn = $('#nav-feedback-btn');
     if (navBtn) {

@@ -1,6 +1,5 @@
 {
   "cleanUrls": false,
-  "cors": true,
   "headers": [
     {
       "source": "**/*.@(mp4|webm)",
