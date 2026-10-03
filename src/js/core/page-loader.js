@@ -105,6 +105,7 @@ class PageLoader {
 
   render(pageName, html) {
     this.currentPage = pageName;
+    this.mountTarget.style.opacity = '0';
     this.mountTarget.innerHTML = html;
 
     // Update document title if defined
@@ -134,6 +135,12 @@ class PageLoader {
       pricingController.init();
       pricingController.syncUI();
     }
+
+    // Buttery smooth fade-in
+    requestAnimationFrame(() => {
+      this.mountTarget.style.transition = 'opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1)';
+      this.mountTarget.style.opacity = '1';
+    });
 
     // Only scroll to top if user was scrolled down
     if (window.scrollY > 80) {

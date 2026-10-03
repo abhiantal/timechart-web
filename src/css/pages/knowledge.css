@@ -721,6 +721,10 @@
   background: #2b2b2b;
 }
 
+.study-pdf-mobile-preview {
+  display: none;
+}
+
 /* 3-Phases Grid */
 .study-phases-grid {
   display: grid;
@@ -1059,13 +1063,117 @@
   .study-book-info { align-items: center; }
   .study-phases-grid, .study-four-laws, .study-math-cards, .study-stat-cards, .study-flow-diagram { grid-template-columns: 1fr; }
   .study-flow-flow { transform: none; }
+  
+  /* Fallback for PDF viewer on tablet/mobile to prevent mobile Chrome crashes */
+  .study-pdf-frame {
+    display: none;
+  }
+  .study-pdf-mobile-preview {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 18px;
+    text-align: center;
+    background: radial-gradient(circle at center, rgba(16, 185, 129, 0.12) 0%, rgba(7, 9, 14, 0.98) 100%);
+  }
 }
 
 @media (max-width: 640px) {
   .study-grid-new { grid-template-columns: 1fr; }
   .study-arch-grid { grid-template-columns: 1fr; }
   .study-hero-stats { flex-direction: column; align-items: center; }
-  .study-detail-top-bar { flex-direction: column; align-items: flex-start; }
+  
+  /* Clean Mobile Navigation Bar for Study Pages */
+  .study-detail-top-bar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--space-md);
+    gap: 8px;
+  }
+  .study-detail-top-bar .study-breadcrumb {
+    display: none; /* Hide cluttered multi-line breadcrumb on mobile */
+  }
+  .study-detail-top-bar .back-btn-pill {
+    width: 100%;
+    justify-content: center;
+    padding: 10px 16px;
+    font-size: 0.85rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  /* Compact Responsive Badges */
+  .study-paper-meta-badge-row,
+  .study-detail-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 12px;
+  }
+  .study-paper-meta-badge-row .badge,
+  .study-detail-tags .badge {
+    font-size: 0.68rem !important;
+    padding: 0.28rem 0.6rem !important;
+    letter-spacing: 0.02em !important;
+    white-space: normal !important;
+    line-height: 1.25 !important;
+    text-align: center;
+  }
+
+  /* Hero Box & Typography Scaling */
+  .study-paper-hero-box {
+    padding: 1.15rem 1rem !important;
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--space-lg);
+  }
+  .study-detail-title {
+    font-size: clamp(1.35rem, 5.8vw, 1.85rem) !important;
+    line-height: 1.25 !important;
+    margin-bottom: 0.5rem !important;
+  }
+  .study-detail-subtitle {
+    font-size: 0.92rem !important;
+    line-height: 1.4 !important;
+    margin-bottom: 1rem !important;
+  }
+
+  /* Author Card */
+  .study-author-card {
+    padding: 10px 12px;
+    gap: 12px;
+    margin: 12px 0 16px;
+  }
+  .study-author-avatar {
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+  }
+  .study-author-name {
+    font-size: 0.9rem;
+  }
+  .study-author-dept {
+    font-size: 0.75rem;
+    line-height: 1.35;
+  }
+
+  /* Actions Bar */
+  .study-paper-actions-bar {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+  }
+  .study-paper-actions-bar a,
+  .study-paper-actions-bar button {
+    width: 100%;
+    justify-content: center;
+    font-size: 0.82rem;
+    padding: 10px 14px;
+  }
+
   .study-nav-bottom {
     display: flex !important;
     flex-direction: row !important;

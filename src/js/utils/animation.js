@@ -7,9 +7,10 @@ import { $$ } from './dom.js';
 
 export class ScrollRevealManager {
   constructor(options = {}) {
+    const isMobile = window.innerWidth < 768;
     this.options = {
-      threshold: 0.12,
-      rootMargin: '0px 0px -40px 0px',
+      threshold: isMobile ? 0.05 : 0.08,
+      rootMargin: isMobile ? '0px 0px 10px 0px' : '0px 0px -20px 0px',
       selector: '.reveal-on-scroll',
       revealedClass: 'is-revealed',
       ...options

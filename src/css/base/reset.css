@@ -16,6 +16,7 @@ html {
   tab-size: 4;
   scroll-behavior: smooth;
   font-size: 16px;
+  overscroll-behavior-y: none;
 }
 
 body {
@@ -29,6 +30,7 @@ body {
   font-family: var(--font-body);
   transition: background-color var(--transition-base), color var(--transition-base);
   overflow-x: hidden;
+  overscroll-behavior-y: none;
 }
 
 img,

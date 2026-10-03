@@ -281,6 +281,56 @@
   .nav-actions .btn-desktop-only {
     display: none;
   }
+  /* Remove theme icon from top bar on mobile/tablet as requested */
+  .nav-actions .theme-toggle,
+  #theme-toggle-btn {
+    display: none !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .navbar {
+    height: 64px;
+    padding: 0 14px;
+    background: rgba(7, 9, 14, 0.88);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .navbar.scrolled {
+    height: 60px;
+    background: rgba(7, 9, 14, 0.96);
+    border-bottom: 1px solid rgba(0, 242, 254, 0.2);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+  }
+  .brand {
+    gap: 10px;
+  }
+  .brand-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+  }
+  .brand-title {
+    font-size: 1.15rem;
+    line-height: 1.1;
+  }
+  .brand-subtitle {
+    font-size: 0.6rem;
+    letter-spacing: 0.06em;
+  }
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .nav-hamburger {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
 }
 
 /* Detail Navigation Breadcrumb (Hidden in favor of clean in-page top bar matching study pages) */
