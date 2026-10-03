@@ -11,12 +11,14 @@ import { pricingController } from './components/pricing.js?v=15';
 import { homeController } from './pages/home.js?v=15';
 import { modalController } from './components/modal.js?v=15';
 import { featureVideoController } from './components/features-video.js?v=15';
+import { feedbackModalController } from './components/feedback-modal.js?v=16';
 import { toast } from './components/toast.js?v=15';
 import { scrollReveal } from './utils/animation.js?v=15';
 import { $$ } from './utils/dom.js?v=15';
 
 // Expose on window for runtime and inline interaction
 window.featureVideoController = featureVideoController;
+window.feedbackModalController = feedbackModalController;
 
 class NextGenApp {
   constructor() {
@@ -44,6 +46,9 @@ class NextGenApp {
 
     // 6. Initialize Modal System
     modalController.init();
+
+    // 6.5. Initialize Cloud Feedback Controller
+    feedbackModalController.init();
 
     // 7. Initialize Feature Card Video Controller (Hover Preview & Theater Mode)
     featureVideoController.init();

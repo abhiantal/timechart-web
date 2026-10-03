@@ -32,9 +32,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="./src/css/main.css?v=17">
-  <link rel="stylesheet" href="./src/css/components/checkout-modal.css?v=17">
-  <link rel="stylesheet" href="./src/css/pages/knowledge.css?v=17">
+  <link rel="stylesheet" href="./src/css/main.css?v=16">
+  <link rel="stylesheet" href="./src/css/components/checkout-modal.css?v=16">
+  <link rel="stylesheet" href="./src/css/components/feedback-modal.css?v=16">
+  <link rel="stylesheet" href="./src/css/pages/knowledge.css?v=16">
   <link rel="icon" type="image/png" href="./assets/main/image/website_logo.png?v=6">
 
   <!-- Payment Gateway SDK -->
@@ -101,6 +102,13 @@
           </div>
         </button>
 
+        <!-- Interactive Feedback Nav Button -->
+        <button type="button" class="nav-feedback-btn" id="nav-feedback-btn" aria-label="Share Feedback">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+          </svg>
+          <span class="nav-feedback-text">Feedback</span>
+        </button>
 
         <!-- Mobile Hamburger Toggle -->
         <button type="button" class="nav-hamburger" id="nav-hamburger" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="nav-drawer">
@@ -120,6 +128,12 @@
       <a href="#billing" class="drawer-link" data-tab-target="billing">Billing &amp; Passes</a>
       <a href="#knowledge" class="drawer-link" data-tab-target="knowledge">Knowledge Hub</a>
       <a href="#terms" class="drawer-link" data-tab-target="terms">Terms &amp; Conditions</a>
+      <a href="#feedback" class="drawer-link" id="drawer-feedback-link">
+        <span style="display:flex; align-items:center; gap:8px;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+          <span>Feedback &amp; Ideas</span>
+        </span>
+      </a>
     </div>
 
     <div class="drawer-footer">
@@ -200,7 +214,7 @@
           </svg>
           <div class="btn-double-label">
             <span class="btn-label-title">Download APK</span>
-            <span class="btn-label-sub">Android 8.0+ &bull; v1.0.0 (~28MB)</span>
+            <span class="btn-label-sub">Android 8.0+ &bull; v1.0.0 (Release APK)</span>
           </div>
         </a>
 
@@ -1476,7 +1490,7 @@
           <span style="font-size: 0.75rem; padding: 4px 10px; border-radius: 8px; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border-subtle); color: var(--text-secondary);">Flutter &amp; Dart</span>
           <span style="font-size: 0.75rem; padding: 4px 10px; border-radius: 8px; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border-subtle); color: var(--text-secondary);">Reactive Architecture</span>
           <span style="font-size: 0.75rem; padding: 4px 10px; border-radius: 8px; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border-subtle); color: var(--text-secondary);">Nova AI Intelligence</span>
-          <span style="font-size: 0.75rem; padding: 4px 10px; border-radius: 8px; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border-subtle); color: var(--text-secondary);">Cloud Sync</span>
+          <span style="font-size: 0.75rem; padding: 4px 10px; border-radius: 8px; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border-subtle); color: var(--text-secondary);">Supabase Cloud</span>
           <span style="font-size: 0.75rem; padding: 4px 10px; border-radius: 8px; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border-subtle); color: var(--text-secondary);">Local-First Storage</span>
           <span style="font-size: 0.75rem; padding: 4px 10px; border-radius: 8px; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border-subtle); color: var(--text-secondary);">Cyber UI/UX Glassmorphism</span>
         </div>
@@ -1563,6 +1577,7 @@
             <a href="#billing" class="footer-link" data-tab-target="billing">Billing &amp; Passes</a>
             <a href="#knowledge" class="footer-link" data-tab-target="knowledge">Knowledge Hub</a>
             <a href="#terms" class="footer-link" data-tab-target="terms">Terms &amp; Conditions</a>
+            <a href="#feedback" class="footer-link" data-open-feedback style="color: var(--color-cyan);">Submit Feedback 💬</a>
           </div>
         </div>
 
@@ -1640,7 +1655,163 @@
     </div>
   </div>
 
+  <!-- Floating Feedback FAB -->
+  <button type="button" class="floating-feedback-fab" id="floating-feedback-fab" aria-label="Share Feedback">
+    <span class="fab-badge" aria-hidden="true"></span>
+    <svg class="fab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+    </svg>
+    <span class="fab-label">Feedback</span>
+  </button>
+
+  <!-- Futuristic Feedback Modal (Supabase Cloud Connected) -->
+  <div id="feedback-modal" class="feedback-modal-backdrop" aria-hidden="true" role="dialog" aria-labelledby="feedback-modal-title">
+    <div class="feedback-modal-container">
+      <div class="feedback-modal-beam"></div>
+
+      <!-- Form View -->
+      <div id="feedback-form-view">
+        <div class="feedback-modal-header">
+          <div class="feedback-header-left">
+            <span class="feedback-header-tag">
+              <span class="pulse-dot text-emerald" style="width:6px; height:6px;"></span>
+              <span>Supabase Cloud Connected</span>
+            </span>
+            <h3 class="feedback-modal-title" id="feedback-modal-title">Share Your Experience</h3>
+            <p class="feedback-modal-subtitle">Your thoughts directly influence Time Chart's architecture &amp; upcoming features.</p>
+          </div>
+          <button type="button" class="feedback-close-btn" id="feedback-close-btn" aria-label="Close Feedback">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          </button>
+        </div>
+
+        <div class="feedback-modal-body">
+          <!-- 1. Star / Emotion Rating -->
+          <div>
+            <div class="feedback-section-label">
+              <span>Overall Rating</span>
+              <span style="font-size:0.75rem; text-transform:none; color:var(--text-muted);">Tap a star</span>
+            </div>
+            <div class="feedback-rating-container">
+              <div class="feedback-stars-row" id="feedback-stars-row" role="radiogroup" aria-label="Star Rating">
+                <button type="button" class="feedback-star-btn active" data-star-val="1" aria-label="1 star">⭐</button>
+                <button type="button" class="feedback-star-btn active" data-star-val="2" aria-label="2 stars">⭐</button>
+                <button type="button" class="feedback-star-btn active" data-star-val="3" aria-label="3 stars">⭐</button>
+                <button type="button" class="feedback-star-btn active" data-star-val="4" aria-label="4 stars">⭐</button>
+                <button type="button" class="feedback-star-btn active" data-star-val="5" aria-label="5 stars">⭐</button>
+              </div>
+              <div class="feedback-rating-label" id="feedback-rating-label">🚀 5/5 — Superb! Absolutely Love It!</div>
+            </div>
+          </div>
+
+          <!-- 2. Category Selector -->
+          <div>
+            <div class="feedback-section-label">
+              <span>Feedback Category</span>
+            </div>
+            <div class="feedback-category-grid">
+              <button type="button" class="feedback-cat-pill active" data-category="Feature Request">
+                <span>💡</span><span>Feature Idea</span>
+              </button>
+              <button type="button" class="feedback-cat-pill" data-category="Bug Report">
+                <span>🐞</span><span>Bug Report</span>
+              </button>
+              <button type="button" class="feedback-cat-pill" data-category="UI &amp; Design">
+                <span>🎨</span><span>UI &amp; UX</span>
+              </button>
+              <button type="button" class="feedback-cat-pill" data-category="Performance">
+                <span>⚡</span><span>Performance</span>
+              </button>
+              <button type="button" class="feedback-cat-pill" data-category="General Feedback">
+                <span>💬</span><span>General</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- 3. Quick Suggestion Tags -->
+          <div>
+            <div class="feedback-section-label">
+              <span>Quick Topics</span>
+              <span style="font-size:0.75rem; text-transform:none; color:var(--text-muted);">Optional</span>
+            </div>
+            <div class="feedback-tags-row">
+              <button type="button" class="feedback-quick-tag" data-tag-text="Smooth UI">✨ Smooth UI</button>
+              <button type="button" class="feedback-quick-tag" data-tag-text="Dark Theme">🌙 Dark Theme</button>
+              <button type="button" class="feedback-quick-tag" data-tag-text="Fast Sync">⚡ Fast Sync</button>
+              <button type="button" class="feedback-quick-tag" data-tag-text="Need Widgets">📱 Widgets</button>
+              <button type="button" class="feedback-quick-tag" data-tag-text="Habit Reminders">⏰ Reminders</button>
+              <button type="button" class="feedback-quick-tag" data-tag-text="Clean Architecture">🛡️ Architecture</button>
+            </div>
+          </div>
+
+          <!-- 4. Description Textarea -->
+          <div class="feedback-input-wrapper">
+            <div class="feedback-section-label">
+              <span>Your Thoughts</span>
+              <span class="feedback-counter" id="feedback-char-counter">0 / 1000</span>
+            </div>
+            <textarea id="feedback-message" class="feedback-textarea" maxlength="1000" rows="3" placeholder="Describe the feature or workflow you would love to see added to Time Chart..."></textarea>
+          </div>
+
+          <!-- 5. Optional User Attribution -->
+          <div>
+            <div class="feedback-section-label">
+              <span>Contact Info</span>
+              <span style="font-size:0.75rem; text-transform:none; color:var(--text-muted);">Optional (For follow-up)</span>
+            </div>
+            <div class="feedback-identity-grid">
+              <input type="text" id="feedback-user-name" class="feedback-input" placeholder="Your Name or Handle" autocomplete="name">
+              <input type="email" id="feedback-user-email" class="feedback-input" placeholder="Email / Time Chart Username" autocomplete="email">
+            </div>
+          </div>
+
+          <!-- 6. Telemetry Capsule -->
+          <div class="feedback-telemetry-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="10" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+            <span id="feedback-telemetry-text">Client: Web Browser • Resolution: Auto • App v1.0.0</span>
+          </div>
+        </div>
+
+        <div class="feedback-modal-footer">
+          <button type="button" class="feedback-submit-btn" id="feedback-submit-btn">
+            <span>Send Feedback to Cloud</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Success Celebration View -->
+      <div id="feedback-success-view" class="feedback-success-view" style="display:none;">
+        <div class="feedback-success-icon">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        </div>
+        <h3 class="feedback-success-title">Feedback Received!</h3>
+        <p class="feedback-success-desc">
+          Thank you for sharing your experience. Your feedback has been safely logged and synchronized with our team.
+        </p>
+        <div class="feedback-receipt-box">
+          <span style="opacity: 0.7;">Ref: </span><strong id="feedback-ref-id">TC-FB-XXXXX</strong>
+        </div>
+        <div id="feedback-status-pill" style="font-size:0.8125rem; font-weight:600; display:flex; align-items:center;">
+          <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:#10B981; margin-right:6px;"></span>
+          <span>Delivered directly to Supabase Cloud</span>
+        </div>
+        <div style="display: flex; gap: 10px; width: 100%; max-width: 320px; margin-top: 10px;">
+          <button type="button" class="btn btn-secondary btn-sm" id="feedback-another-btn" style="flex: 1;">
+            Send Another
+          </button>
+          <button type="button" class="btn btn-primary btn-sm" id="feedback-done-btn" style="flex: 1;">
+            Close
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
   <!-- Master Application Script -->
-  <script type="module" src="./src/js/main.js?v=17"></script>
+  <script type="module" src="./src/js/main.js?v=16"></script>
 </body>
 </html>
