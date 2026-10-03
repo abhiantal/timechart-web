@@ -265,7 +265,6 @@ export class PricingController {
             duration: 4000,
           });
 
-          // 3. Zero-Trust Server Verification via centralized endpoint registry
           try {
             const verifyResp = await fetch(`${APP_CONFIG.supabase.url}${APP_LINKS.edgeFunctionVerifyPayment}`, {
               method: 'POST',
@@ -307,6 +306,9 @@ export class PricingController {
               message: 'Payment received. Server webhook will auto-credit your tier within 1-2 minutes.',
               duration: 7000,
             });
+          } finally {
+            button.textContent = originalText;
+            button.disabled = false;
           }
         },
         modal: {
