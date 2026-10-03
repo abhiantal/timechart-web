@@ -209,6 +209,28 @@ export const APP_LINKS = {
       embedUrl: 'https://www.youtube-nocookie.com/embed/AdKUJxjn-R8',
       watchUrl: 'https://www.youtube.com/watch?v=AdKUJxjn-R8',
     },
+
+    /**
+     * [USED IN]: `pages/Knowledge/social-feed-influence.html` (Embed iframe & "Watch Full Lecture on YouTube" button).
+     * [WHY]: Dr. Robert Cialdini's seminal work on social proof, commitment, and the 6 principles of influence.
+     */
+    socialInfluence: {
+      videoId: 'cFdCzN7RYbw',
+      title: 'Dr. Robert Cialdini: Science Of Persuasion & Social Proof',
+      embedUrl: 'https://www.youtube-nocookie.com/embed/cFdCzN7RYbw',
+      watchUrl: 'https://www.youtube.com/watch?v=cFdCzN7RYbw',
+    },
+
+    /**
+     * [USED IN]: `pages/Knowledge/bucket-list-the-secret.html` (Embed iframe & "Watch Full Lecture on YouTube" button).
+     * [WHY]: Rhonda Byrne's framework on creative visualization and the Reticular Activating System (RAS).
+     */
+    theSecret: {
+      videoId: 'kPSQ-rCNfTA',
+      title: 'Law of ATTRACTION Explained by Rhonda Byrne (How to MANIFEST ANYTHING!)',
+      embedUrl: 'https://www.youtube-nocookie.com/embed/kPSQ-rCNfTA',
+      watchUrl: 'https://www.youtube.com/watch?v=kPSQ-rCNfTA',
+    },
   },
 
   /**
