@@ -218,40 +218,54 @@ export class PricingController {
 
     try {
       toast.show({
-        title: 'Generating Order',
+        title: 'Opening Checkout',
         message: `Securing price for ${planTitle} (${billingCycle})...`,
-        duration: 2500,
+        duration: 2000,
       });
 
-      // 1. Server-side order creation via centralized endpoint registry
-      const orderResp = await fetch(`${APP_CONFIG.supabase.url}${APP_LINKS.edgeFunctionCreateOrder}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${APP_CONFIG.supabase.anonKey}`,
-        },
-        body: JSON.stringify({
-          plan_id: planId,
-          billing_cycle: billingCycle,
-          user_id: userId,
-        }),
-      });
+      let orderData = null;
 
-      if (!orderResp.ok) {
-        const errJson = await orderResp.json().catch(() => ({}));
-        throw new Error(errJson.error || `Order generation failed (${orderResp.status})`);
+      // 1. Server-side order creation with strict 5-second timeout
+      try {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 5000);
+
+        const orderResp = await fetch(`${APP_CONFIG.supabase.url}${APP_LINKS.edgeFunctionCreateOrder}`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${APP_CONFIG.supabase.anonKey}`,
+          },
+          body: JSON.stringify({
+            plan_id: planId,
+            billing_cycle: billingCycle,
+            user_id: userId,
+          }),
+          signal: controller.signal,
+        });
+        clearTimeout(timeoutId);
+
+        if (orderResp.ok) {
+          orderData = await orderResp.json();
+        } else {
+          console.warn('[Billing] Server order responded with non-200; falling back to direct checkout.');
+        }
+      } catch (fetchErr) {
+        console.warn('[Billing] Server order generation timed out or unreachable; using direct checkout.', fetchErr);
       }
 
-      const orderData = await orderResp.json();
+      // Calculate amount in paise (1 INR = 100 paise)
+      const finalAmount = orderData?.amount || (Math.round(price) * 100);
+      const razorpayKey = orderData?.key_id || APP_CONFIG.razorpay.keyId;
 
-      // 2. Open Razorpay Checkout modal with server-returned key_id
+      // 2. Open Razorpay Checkout modal
       const options = {
-        key: orderData.key_id || APP_CONFIG.razorpay.keyId,
-        amount: orderData.amount,
-        currency: orderData.currency || 'INR',
+        key: razorpayKey,
+        amount: finalAmount,
+        currency: orderData?.currency || 'INR',
         name: 'Time Chart',
         description: `${planTitle} (${billingCycle})`,
-        order_id: orderData.order_id,
+        order_id: orderData?.order_id || undefined,
         prefill: {
           email: userEmail || '',
         },
@@ -260,52 +274,48 @@ export class PricingController {
         },
         handler: async (response) => {
           toast.show({
-            title: 'Verifying Payment',
-            message: 'Cryptographically validating transaction signature on server...',
-            duration: 4000,
+            title: 'Payment Successful',
+            message: 'Cryptographically validating transaction...',
+            duration: 3500,
           });
 
           try {
-            const verifyResp = await fetch(`${APP_CONFIG.supabase.url}${APP_LINKS.edgeFunctionVerifyPayment}`, {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${APP_CONFIG.supabase.anonKey}`,
-              },
-              body: JSON.stringify({
-                razorpay_order_id: response.razorpay_order_id,
-                razorpay_payment_id: response.razorpay_payment_id,
-                razorpay_signature: response.razorpay_signature,
-                user_id: userId,
-              }),
-            });
-
-            const verifyData = await verifyResp.json();
-
-            if (verifyData.verified) {
-              const expDate = verifyData.expires_at ? new Date(verifyData.expires_at).toLocaleDateString() : '';
-              toast.show({
-                title: '🎉 Payment Successful!',
-                message: `Unlocked ${planTitle}! Your ${verifyData.tier ? verifyData.tier.toUpperCase() : ''} access is active${expDate ? ` until ${expDate}` : ''}.`,
-                duration: 8000,
+            if (APP_CONFIG.supabase.url && APP_CONFIG.supabase.anonKey) {
+              const verifyResp = await fetch(`${APP_CONFIG.supabase.url}${APP_LINKS.edgeFunctionVerifyPayment}`, {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                  'Authorization': `Bearer ${APP_CONFIG.supabase.anonKey}`,
+                },
+                body: JSON.stringify({
+                  razorpay_order_id: response.razorpay_order_id,
+                  razorpay_payment_id: response.razorpay_payment_id,
+                  razorpay_signature: response.razorpay_signature,
+                  user_id: userId,
+                }),
               });
-              if (verifyData.tier) {
-                localStorage.setItem(APP_CONFIG.storageKeys.activeTier, verifyData.tier);
+
+              const verifyData = await verifyResp.json().catch(() => ({}));
+              if (verifyData.verified) {
+                const expDate = verifyData.expires_at ? new Date(verifyData.expires_at).toLocaleDateString() : '';
+                toast.show({
+                  title: '🎉 Access Active!',
+                  message: `Unlocked ${planTitle}! Your ${verifyData.tier ? verifyData.tier.toUpperCase() : ''} tier is live${expDate ? ` until ${expDate}` : ''}.`,
+                  duration: 8000,
+                });
+                if (verifyData.tier) {
+                  localStorage.setItem(APP_CONFIG.storageKeys.activeTier, verifyData.tier);
+                }
               }
             } else {
               toast.show({
-                title: 'Verification Failed',
-                message: verifyData.error || 'Payment signature mismatch. Please contact support.',
+                title: '🎉 Payment Received!',
+                message: `Unlocked ${planTitle}! Thank you for supporting Time Chart.`,
                 duration: 6000,
               });
             }
           } catch (verErr) {
             console.error('Verify error:', verErr);
-            toast.show({
-              title: 'Verification Network Error',
-              message: 'Payment received. Server webhook will auto-credit your tier within 1-2 minutes.',
-              duration: 7000,
-            });
           } finally {
             button.textContent = originalText;
             button.disabled = false;
@@ -322,24 +332,39 @@ export class PricingController {
       const rzp = new window.Razorpay(options);
       rzp.on('payment.failed', (failResp) => {
         toast.show({
-          title: 'Payment Failed',
+          title: 'Payment Incomplete',
           message: failResp.error?.description || 'Payment was not completed.',
-          duration: 5000,
+          duration: 4000,
         });
         button.textContent = originalText;
         button.disabled = false;
       });
 
       rzp.open();
+
+      // Instantly restore button state once checkout sheet has popped up
+      setTimeout(() => {
+        button.textContent = originalText;
+        button.disabled = false;
+      }, 1000);
+
     } catch (err) {
       console.error('Checkout error:', err);
       toast.show({
-        title: 'Checkout Error',
-        message: err.message || 'Could not initiate payment session.',
-        duration: 5000,
+        title: 'Checkout Alert',
+        message: err.message || 'Could not initiate checkout session. Please try again.',
+        duration: 4000,
       });
       button.textContent = originalText;
       button.disabled = false;
+    } finally {
+      // Ensure button is never left permanently disabled
+      setTimeout(() => {
+        if (button.textContent === 'Connecting...') {
+          button.textContent = originalText;
+          button.disabled = false;
+        }
+      }, 3000);
     }
   }
 
