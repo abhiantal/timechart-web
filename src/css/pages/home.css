@@ -1,4 +1,4 @@
-/**
+﻿/**
  * NextGen Page Styles - Redesigned Home
  * Flagship Showcase, Interactive Phone Mockup, APK Download Center & Founder Hub
  */
@@ -1248,8 +1248,8 @@
 }
 
 .company-emblem-wrapper {
-  width: 130px;
-  height: 130px;
+  width: clamp(180px, 26vw, 280px);
+  height: auto;
   margin: 0 auto var(--space-md) auto;
   position: relative;
   display: flex;
@@ -1845,8 +1845,8 @@
 }
 
 .company-emblem-wrapper {
-  width: 120px;
-  height: 120px;
+  width: clamp(180px, 26vw, 280px);
+  height: auto;
   margin: 0 auto 1rem auto;
   position: relative;
   display: flex;
@@ -2058,7 +2058,7 @@
 .home-hero-app-logo {
   position: relative;
   z-index: 1;
-  width: clamp(140px, 17vw, 210px);
+  width: clamp(170px, 22vw, 260px);
   height: auto;
   object-fit: contain;
   filter: drop-shadow(0 0 32px rgba(0, 242, 254, 0.45)) drop-shadow(0 0 55px rgba(245, 158, 11, 0.28));
