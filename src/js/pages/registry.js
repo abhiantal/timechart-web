@@ -41,7 +41,7 @@ export const PAGE_PATHS = {
   'study/j-curve': './pages/Knowledge/performance-dip-j-curve.html',
   'study/research': './pages/Knowledge/behavioral-science-research.html',
 
-  // 11 Core Action Modules
+  // 13 Core Action Modules
   'features/day-task': './pages/modules/day-task.html',
   'features/weekly-task': './pages/modules/weekly-task.html',
   'features/long-goal': './pages/modules/long-goal.html',
@@ -53,6 +53,8 @@ export const PAGE_PATHS = {
   'features/mentorship': './pages/modules/mentorship.html',
   'features/social': './pages/modules/social.html',
   'features/chat': './pages/modules/chat.html',
+  'features/studybook': './pages/modules/studybook.html',
+  'features/timepromo': './pages/modules/timepromo.html',
 
   // 3 Platform & System Features
   'features/ai': './pages/modules/ai.html',
@@ -87,7 +89,7 @@ export const PAGE_TITLES = {
   'study/the-secret': 'The Secret & Visualization — Time Chart Research',
   'study/social-accountability': 'Social Proof & Public Accountability — Time Chart Research',
 
-  // 11 Module Detail Titles
+  // 13 Module Detail Titles
   'features/day-task': 'Day Task Module — Time Chart',
   'features/weekly-task': 'Weekly Task Module — Time Chart',
   'features/long-goal': 'Long Goal Module — Time Chart',
@@ -99,6 +101,8 @@ export const PAGE_TITLES = {
   'features/mentorship': 'Mentorship Module — Time Chart',
   'features/social': 'Social Feed Module — Time Chart',
   'features/chat': 'Task-Connected Chat Module — Time Chart',
+  'features/studybook': 'StudyBook Academic Canvas Module — Time Chart',
+  'features/timepromo': 'TimePromo & Alarms Module — Time Chart',
 
   // 3 Platform Feature Titles
   'features/ai': 'Nova AI Copilot — Time Chart Feature',
@@ -118,6 +122,8 @@ export const MODULE_NAMES = {
   'mentorship': 'Mentorship',
   'social': 'Social Feed',
   'chat': 'Chat',
+  'studybook': 'StudyBook & Notes',
+  'timepromo': 'TimePromo & Alarms',
   'ai': 'Nova AI',
   'settings': 'Settings',
   'notifications': 'Notifications'
