@@ -35,12 +35,12 @@
 /* ==========================================================================
    4. Page-Specific Styles
    ========================================================================== */
-@import url('./pages/home.css');
-@import url('./pages/features.css');
-@import url('./pages/billing.css');
-@import url('./pages/knowledge.css');
-@import url('./pages/terms.css');
-@import url('./pages/module-detail.css');
+@import url('./pages/home.css?v=50');
+@import url('./pages/features.css?v=50');
+@import url('./pages/billing.css?v=50');
+@import url('./pages/knowledge.css?v=50');
+@import url('./pages/terms.css?v=50');
+@import url('./pages/module-detail.css?v=50');
 
 /* ==========================================================================
    5. Utilities & Animations
