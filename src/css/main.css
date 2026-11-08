@@ -30,7 +30,7 @@
 @import url('./components/checkout-modal.css');
 @import url('./components/toast.css');
 @import url('./components/feedback-modal.css');
-@import url('./components/footer.css');
+@import url('./components/footer.css?v=50');
 
 /* ==========================================================================
    4. Page-Specific Styles
