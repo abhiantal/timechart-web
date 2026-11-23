@@ -6,6 +6,7 @@
 export const PAGE_PATHS = {
   home: './pages/main/home.html',
   features: './pages/main/features.html',
+  comparison: './pages/main/comparison.html',
   billing: './pages/main/billing.html',
   knowledge: './pages/main/knowledge.html',
   study: './pages/main/knowledge.html',
@@ -64,7 +65,8 @@ export const PAGE_PATHS = {
 
 export const PAGE_TITLES = {
   home: 'NextGen — Intelligent Ecosystem & Time Chart',
-  features: 'Modules & Features (11+3) — Time Chart',
+  features: 'Modules & Features (16 Modules) — Time Chart',
+  comparison: 'Time Chart vs Industry — Comparison & Architecture',
   billing: 'Subscriptions & Monetization — Time Chart',
   knowledge: 'Knowledge & Research Hub — NextGen',
   study: 'Knowledge & Research Hub — NextGen',

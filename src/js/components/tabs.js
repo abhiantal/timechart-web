@@ -9,7 +9,7 @@ import { PAGE_PATHS, MODULE_NAMES } from '../pages/registry.js?v=50';
 
 export class TabController {
   constructor() {
-    this.primaryTabs = ['home', 'features', 'billing', 'knowledge', 'study', 'terms'];
+    this.primaryTabs = ['home', 'features', 'comparison', 'billing', 'knowledge', 'study', 'terms'];
     this.currentRoute = 'home';
     this.navLinks = $$('[data-tab-target]');
   }
