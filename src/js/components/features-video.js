@@ -1,4 +1,4 @@
-/**
+﻿/**
  * NextGen Component - Features Video Controller
  * Manages video previews on feature cards (hover to play, theater mode lightbox).
  */
@@ -101,12 +101,7 @@ export class FeatureVideoController {
           categoryPill.classList.add('active');
         }
         if (filterTarget === 'all') {
-          const firstSection = document.querySelector('.feature-category-group');
-          if (firstSection) {
-            firstSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          } else {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-          }
+          window.scrollTo({ top: 0, behavior: 'smooth' });
         } else {
           const targetSection = document.getElementById(filterTarget);
           if (targetSection) {

@@ -3,18 +3,18 @@
  * Entry point orchestrating core modules, components, tabs, and animations.
  */
 
-import { APP_CONFIG } from './core/config.js?v=65';
-import { themeEngine } from './core/theme.js?v=65';
-import { navbarController } from './components/navbar.js?v=65';
-import { tabController } from './components/tabs.js?v=65';
-import { pricingController } from './components/pricing.js?v=65';
-import { homeController } from './pages/home.js?v=65';
-import { modalController } from './components/modal.js?v=65';
-import { featureVideoController } from './components/features-video.js?v=65';
-import { feedbackModalController } from './components/feedback-modal.js?v=65';
-import { toast } from './components/toast.js?v=65';
-import { scrollReveal } from './utils/animation.js?v=65';
-import { $$ } from './utils/dom.js?v=65';
+import { APP_CONFIG } from './core/config.js?v=70';
+import { themeEngine } from './core/theme.js?v=70';
+import { navbarController } from './components/navbar.js?v=70';
+import { tabController } from './components/tabs.js?v=70';
+import { pricingController } from './components/pricing.js?v=70';
+import { homeController } from './pages/home.js?v=70';
+import { modalController } from './components/modal.js?v=70';
+import { featureVideoController } from './components/features-video.js?v=70';
+import { feedbackModalController } from './components/feedback-modal.js?v=70';
+import { toast } from './components/toast.js?v=70';
+import { scrollReveal } from './utils/animation.js?v=70';
+import { $$ } from './utils/dom.js?v=70';
 
 // Expose on window for runtime and inline interaction
 window.featureVideoController = featureVideoController;
