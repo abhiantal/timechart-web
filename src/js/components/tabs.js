@@ -3,9 +3,9 @@
  * Synchronizes tabs, URL hashes, desktop navbar, mobile drawer, and mounts separate page files and module detail views.
  */
 
-import { $, $$, on, addClass, removeClass } from '../utils/dom.js?v=70';
-import { pageLoader } from '../core/page-loader.js?v=70';
-import { PAGE_PATHS, MODULE_NAMES } from '../pages/registry.js?v=70';
+import { $, $$, on, addClass, removeClass } from '../utils/dom.js?v=75';
+import { pageLoader } from '../core/page-loader.js?v=75';
+import { PAGE_PATHS, MODULE_NAMES } from '../pages/registry.js?v=75';
 
 export class TabController {
   constructor() {
