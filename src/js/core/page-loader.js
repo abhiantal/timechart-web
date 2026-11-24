@@ -1,4 +1,4 @@
-/**
+﻿/**
  * NextGen Core - Page Loader & Combiner
  * Dynamically fetches and mounts dedicated page files into index.html shell.
  */
@@ -7,7 +7,7 @@ import { $ } from '../utils/dom.js';
 import { scrollReveal } from '../utils/animation.js';
 import { pricingController } from '../components/pricing.js';
 import { homeController } from '../pages/home.js';
-import { PAGE_PATHS, PAGE_TITLES } from '../pages/registry.js?v=50';
+import { PAGE_PATHS, PAGE_TITLES } from '../pages/registry.js?v=65';
 
 class PageLoader {
   constructor() {
