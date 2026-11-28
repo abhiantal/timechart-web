@@ -23,21 +23,28 @@ export const APP_LINKS = {
 
   /**
    * [USED IN]: Universal link generation, metadata canonical tags, SEO open-graph tags.
-   * [WHY]: Primary domain for the Time Chart web platform.
+   * [WHY]: Official GitHub Pages host for NextGen Technologies & Time Chart.
    */
-  webDomain: 'timechart.com',
+  webDomain: 'abhiantal.github.io',
 
   /**
-   * [USED IN]: Absolute URL builders and social share previews.
-   * [WHY]: Standard secure web base URL.
+   * [USED IN]: Absolute URL builders, legal policy links, and social share previews.
+   * [WHY]: Live HTTPS GitHub Pages base URL (no custom domain required).
    */
-  webBaseUrl: 'https://timechart.com',
+  webBaseUrl: 'https://abhiantal.github.io/timechart-web',
 
   /**
-   * [USED IN]: Mobile landing redirects and QR code app installation banners.
-   * [WHY]: Branded lightweight download portal for iOS and Android onboarding.
+   * [USED IN]: Mobile landing redirects and direct Android APK installation banners.
+   * [WHY]: Direct APK release download hosted on the official GitHub Pages portal.
    */
-  appDownloadUrl: 'https://timechart.app/download',
+  appDownloadUrl: 'https://abhiantal.github.io/timechart-web/downloads/time-chart.apk',
+
+  /**
+   * [USED IN]: Google Play Console, OAuth consent screen, and direct compliance links.
+   * [WHY]: Standalone static Privacy Policy readable by crawlers without JS hash routing.
+   */
+  privacyPolicyUrl: 'https://abhiantal.github.io/timechart-web/privacy.html',
+  termsOfServiceUrl: 'https://abhiantal.github.io/timechart-web/#terms',
 
   /**
    * [USED IN]: Web-to-app deep linking headers and smart app banners.
@@ -127,6 +134,7 @@ export const APP_LINKS = {
     billing: '#billing',
     knowledge: '#knowledge',
     terms: '#terms',
+    privacy: '#privacy',
   },
 
   // ============================================================================

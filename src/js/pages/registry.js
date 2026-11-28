@@ -11,6 +11,7 @@ export const PAGE_PATHS = {
   knowledge: './pages/main/knowledge.html',
   study: './pages/main/knowledge.html',
   terms: './pages/main/terms.html',
+  privacy: './privacy.html',
 
   // 8 Knowledge / Study Deep-Dive Pages
   'knowledge/bucket-list-the-secret': './pages/Knowledge/bucket-list-the-secret.html',
@@ -64,13 +65,14 @@ export const PAGE_PATHS = {
 };
 
 export const PAGE_TITLES = {
-  home: 'NextGen — Intelligent Ecosystem & Time Chart',
+  home: 'NextGen Technologies — Intelligent Ecosystem & Time Chart',
   features: 'Modules & Features (16 Modules) — Time Chart',
   comparison: 'Time Chart vs Industry — Comparison & Architecture',
   billing: 'Subscriptions & Monetization — Time Chart',
-  knowledge: 'Knowledge & Research Hub — NextGen',
-  study: 'Knowledge & Research Hub — NextGen',
-  terms: 'Terms & Conditions — Time Chart',
+  knowledge: 'Knowledge & Research Hub — NextGen Technologies',
+  study: 'Knowledge & Research Hub — NextGen Technologies',
+  terms: 'Terms & Conditions — Time Chart by NextGen Technologies',
+  privacy: 'Privacy Policy & Data Safety — Time Chart by NextGen Technologies',
 
   // 8 Knowledge / Study Deep-Dive Titles
   'knowledge/j-curve': 'The J-Curve Effect — Time Chart Research',

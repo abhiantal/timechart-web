@@ -5,7 +5,7 @@
  */
 
 export const APP_CONFIG = {
-  name: 'NextGen',
+  name: 'NextGen Technologies',
   version: '1.0.0',
   storageKeys: {
     theme: 'nexgen_theme_preference',

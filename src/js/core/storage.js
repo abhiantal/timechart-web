@@ -68,4 +68,3 @@ class StorageManager {
 }
 
 export const appStorage = new StorageManager('localStorage');
-export const sessionAppStorage = new StorageManager('sessionStorage');

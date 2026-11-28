@@ -8,7 +8,7 @@
    ========================================================================== */
 @import url('./base/variables.css');
 @import url('./base/reset.css');
-@import url('./base/typography.css');
+@import url('./base/typography.css?v=77');
 
 /* ==========================================================================
    2. Layout Systems
@@ -27,20 +27,21 @@
 @import url('./components/theme-toggle.css');
 @import url('./components/tabs.css');
 @import url('./components/pricing-table.css');
-@import url('./components/checkout-modal.css');
-@import url('./components/toast.css');
-@import url('./components/feedback-modal.css');
-@import url('./components/footer.css?v=50');
+@import url('./components/checkout-modal.css?v=76');
+@import url('./components/toast.css?v=76');
+@import url('./components/feedback-modal.css?v=76');
+@import url('./components/theater-modal.css?v=76');
+@import url('./components/footer.css?v=76');
 
 /* ==========================================================================
    4. Page-Specific Styles
    ========================================================================== */
-@import url('./pages/home.css?v=50');
-@import url('./pages/features.css?v=50');
-@import url('./pages/billing.css?v=50');
-@import url('./pages/knowledge.css?v=50');
-@import url('./pages/terms.css?v=50');
-@import url('./pages/module-detail.css?v=50');
+@import url('./pages/home.css?v=76');
+@import url('./pages/features.css?v=76');
+@import url('./pages/billing.css?v=76');
+@import url('./pages/knowledge.css?v=76');
+@import url('./pages/terms.css?v=76');
+@import url('./pages/module-detail.css?v=76');
 
 /* ==========================================================================
    5. Utilities & Animations

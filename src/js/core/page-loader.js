@@ -1,4 +1,4 @@
-﻿/**
+/**
  * NextGen Core - Page Loader & Combiner
  * Dynamically fetches and mounts dedicated page files into index.html shell.
  */
@@ -7,6 +7,7 @@ import { $ } from '../utils/dom.js';
 import { scrollReveal } from '../utils/animation.js';
 import { pricingController } from '../components/pricing.js';
 import { homeController } from '../pages/home.js';
+import { comparisonController } from '../pages/comparison.js?v=76';
 import { PAGE_PATHS, PAGE_TITLES } from '../pages/registry.js?v=75';
 
 class PageLoader {
@@ -85,8 +86,16 @@ class PageLoader {
         throw new Error(`Failed to load ${resolvedUrl} (${response.status})`);
       }
       const html = await response.text();
-      this.pageCache.set(pageName, html);
-      this.render(pageName, html);
+      let fragmentHtml = html;
+      if (/<main[\s>]/i.test(html) && /<html[\s>]/i.test(html)) {
+        const doc = new DOMParser().parseFromString(html, 'text/html');
+        const mainEl = doc.querySelector('main');
+        if (mainEl) {
+          fragmentHtml = mainEl.innerHTML;
+        }
+      }
+      this.pageCache.set(pageName, fragmentHtml);
+      this.render(pageName, fragmentHtml);
     } catch (err) {
       console.error(`[PageLoader] Error loading page "${pageName}":`, err);
       this.mountTarget.innerHTML = `
@@ -134,6 +143,8 @@ class PageLoader {
     } else if (pageName === 'billing') {
       pricingController.init();
       pricingController.syncUI();
+    } else if (pageName === 'comparison') {
+      comparisonController.init();
     }
 
     // Buttery smooth fade-in

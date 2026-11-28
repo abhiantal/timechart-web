@@ -1,4 +1,4 @@
-﻿/**
+/**
  * NextGen Master Script
  * Entry point orchestrating core modules, components, tabs, and animations.
  */
@@ -9,7 +9,6 @@ import { navbarController } from './components/navbar.js?v=75';
 import { tabController } from './components/tabs.js?v=75';
 import { pricingController } from './components/pricing.js?v=75';
 import { homeController } from './pages/home.js?v=75';
-import { modalController } from './components/modal.js?v=75';
 import { featureVideoController } from './components/features-video.js?v=75';
 import { feedbackModalController } from './components/feedback-modal.js?v=75';
 import { toast } from './components/toast.js?v=75';
@@ -44,10 +43,7 @@ class NextGenApp {
     // 5. Initialize Billing Pricing Toggle
     pricingController.init();
 
-    // 6. Initialize Modal System
-    modalController.init();
-
-    // 6.5. Initialize Cloud Feedback Controller
+    // 6. Initialize Cloud Feedback Controller
     feedbackModalController.init();
 
     // 7. Initialize Feature Card Video Controller (Hover Preview & Theater Mode)

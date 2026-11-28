@@ -1,4 +1,4 @@
-﻿/**
+/**
  * NextGen Component - Tab Navigation Router & Combiner
  * Synchronizes tabs, URL hashes, desktop navbar, mobile drawer, and mounts separate page files and module detail views.
  */
@@ -9,7 +9,7 @@ import { PAGE_PATHS, MODULE_NAMES } from '../pages/registry.js?v=75';
 
 export class TabController {
   constructor() {
-    this.primaryTabs = ['home', 'features', 'comparison', 'billing', 'knowledge', 'study', 'terms'];
+    this.primaryTabs = ['home', 'features', 'comparison', 'billing', 'knowledge', 'study', 'terms', 'privacy'];
     this.currentRoute = 'home';
     this.navLinks = $$('[data-tab-target]');
   }

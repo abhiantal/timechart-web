@@ -671,10 +671,11 @@
 }
 
 .study-author-name {
-  font-family: var(--font-heading);
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: var(--text-primary);
+  font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  font-size: 1.28rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  color: var(--color-cyan);
 }
 
 .study-author-dept {
@@ -1152,7 +1153,7 @@
     flex-shrink: 0;
   }
   .study-author-name {
-    font-size: 0.9rem;
+    font-size: 1.12rem;
   }
   .study-author-dept {
     font-size: 0.75rem;

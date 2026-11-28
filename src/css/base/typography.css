@@ -3,7 +3,29 @@
  * Futuristic heading styles, fluid scales, and text utilities.
  */
 
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap');
+
+/* Founder & Architect Signature Typography */
+.founder-name-display {
+  font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  font-size: clamp(1.95rem, 3.4vw, 2.75rem);
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  line-height: 1.15;
+  background: var(--grad-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
+}
+
+.founder-name-inline {
+  font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  font-size: 1.15em;
+  font-weight: 700;
+  letter-spacing: 0.025em;
+  color: var(--color-cyan);
+}
 
 /* Headings */
 h1, h2, h3, h4, h5, h6,
